@@ -7,12 +7,12 @@
 
         <v-btn >
             <v-icon>mdi-washing-machine</v-icon>
-            <span>주변세탁소</span>
+            <span>내세탁소</span>
         </v-btn>
 
         <v-btn >
             <v-icon>mdi-format-list-bulleted</v-icon>
-            <span>이용내역</span>
+            <span>주문관리</span>
         </v-btn>
 
         <v-btn >
