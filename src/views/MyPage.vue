@@ -93,8 +93,6 @@
 
             </div>
 
-            <!--<router-link to="/home" exact active-class="active" tag="button">Home 페이지로 이동</router-link>-->
-
             <!-- 넷바는 따로 컴포넌트를 만들어서 App.vue에 적용했기때문에 주석처리 했습니다 -->
             <!-- <div class="nav">
                 <span><img id="home" src="./assets/home.png"></span>
