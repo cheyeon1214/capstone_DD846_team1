@@ -6,7 +6,7 @@
         <div class="wrapper">
 
             <div class="mypage">
-                <h4>My page</h4>
+                <h4>My page'</h4>
                 <hr id="mypageLine">
             </div>
 
