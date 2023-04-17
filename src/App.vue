@@ -56,3 +56,11 @@ export default {
   },
 }
 </script>
+<style>
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+</style>
