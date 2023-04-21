@@ -5,7 +5,7 @@
       <div class="content">
         <v-carousel cycle height="10" hide-delimiter-background show-arrows="hover"></v-carousel>
                 <div class="myWashing">
-                    <h5><b>내 세탁물</b></h5>
+                    <b>내 세탁물</b>
                 </div>
 
                 <div class="date">
@@ -22,8 +22,8 @@
                 </div>
 
                 <hr id="divisionLine">
-                <div class="myHistory">
-                    <h5><b>세탁 내역</b></h5>
+                <div class="myWashing">
+                    <b>세탁 내역</b>
                 </div>
 
                 <div class="date" id="date">
@@ -52,7 +52,7 @@
                 <div class="washingStatus">
                     <span><img id="washingImg" src="./assets/washings.png"></span>
                     <span>
-                        <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;종합 세탁물 &nbsp;&nbsp;∙ <a class="delivery">배송완료(3/12)</a></p>
+                        <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;종합세탁물 &nbsp;&nbsp;∙ <a class="delivery">배송완료(3/12)</a></p>
                         <p id="cost">세탁비용 | &nbsp;10,000원</p>
                         <p id="requirement">요청사항 | &nbsp;없음</p>
                     </span>
@@ -65,8 +65,9 @@
 
 .myWashing {
     margin-left: 6%;
-    margin-top: 2%;
-    margin-bottom: 1%;
+    margin-top: 20px;
+    font-size: 18px;
+    margin-bottom: -5px;
 }
 
 #divisionLine {
@@ -76,11 +77,6 @@
   margin-bottom: 30px;
 }
 
-.myHistory {
-    margin-left: 6%;
-    margin-top: 2%;
-}
-
 .date {
     margin-top: 40px;
     margin-left: 6%;
@@ -88,7 +84,7 @@
 }
 
 .washingStatus {
-    height: 100px;
+    height: 110px;
     border-radius: 13px;
     font-size: smaller;
     background-color: white;
@@ -98,10 +94,13 @@
     margin-right: 5%;
     margin-bottom: 15px;
     margin-top: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: scroll;
 }
 
 #name {
-    margin-top: 14px;
+    margin-top: 19px;
     margin-bottom: 5px;
 }
 #cost {
@@ -118,8 +117,8 @@
     height: 70px;
     float: left;
     margin-left: 20px;
-    margin-top: 14px;
-    margin-right: 25px;
+    margin-top: 20px;
+    margin-right: 20px;
     border-radius: 15%;
 }
 
