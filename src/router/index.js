@@ -11,6 +11,8 @@ import SubmitLaundry from '@/views/SubmitLaundry.vue'
 import LoginFormVue from '@/views/LoginForm.vue'
 import SignUpFormVue from '@/views/SignUpForm.vue'
 
+import AddReviewVue from '@/views/AddReview.vue'
+
 const routes = [
   {
     path: '/',
@@ -53,6 +55,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUpFormVue
+  },
+  {
+    path: '/addreview',
+    name: 'addreview',
+    component: AddReviewVue
   },
 ]
 
