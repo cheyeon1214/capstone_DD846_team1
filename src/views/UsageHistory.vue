@@ -3,7 +3,7 @@
 <template>
     <div class="wrapper">
       <div class="content">
-        <v-carousel cycle height="250" hide-delimiter-background show-arrows="hover"></v-carousel>
+        <v-carousel cycle height="10" hide-delimiter-background show-arrows="hover"></v-carousel>
         <div class="myWashing">
                     <h5><b>내 세탁물</b></h5>
                 </div>
@@ -20,9 +20,8 @@
                         <p id="requirement">요청사항 | 얼룩 깨끗하게 지워주세요</p>
                     </span>
                 </div>
-                <br>
 
-                <hr id="myHistoryLine">
+                <hr id="divisionLine">
                 <div class="myHistory">
                     <h5><b>세탁 내역</b></h5>
                 </div>
@@ -45,13 +44,13 @@
                         <p id="cost">세탁비용 | 13,000원</p>
                         <p id="requirement">요청사항 | 기장 2cm 줄여주세요</p>
                     </span>
-                </div><br>
+                </div>
 
                 <div class="date" id="date">
                     <b>2023.03.10</b>
                 </div>
                 <div class="washingStatus">
-                    <span><img id="washings" src="./assets/washings.png"></span>
+                    <span><img id="washingImg" src="./assets/washings.png"></span>
                     <span>
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목 | 종합 세탁물 &nbsp;∙ <a class="delivery">배송완료(3/12)</a></p>
                         <p id="cost">세탁비용 | 10,000원</p>
@@ -80,41 +79,47 @@
 
 .myWashing {
     margin-left: 6%;
-    margin-top: 3%;
+    margin-top: 2%;
     margin-bottom: 1%;
 }
 
-#myHistoryLine {
-  margin-left: 4%;
-  margin-right: 4%;
+#divisionLine {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
 .myHistory {
     margin-left: 6%;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .date {
+    margin-top: 40px;
     margin-left: 6%;
     font-size: 15px;
 }
 
 .washingStatus {
-    height: 85px;
+    height: 100px;
     border-radius: 13px;
     font-size: smaller;
     background-color: white;
     border: 1px solid gainsboro;
     font-display: center;
-    margin: 5%;
-    margin-top: 1.5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 #name {
-  margin-bottom: 5px;
+    margin-top: 14px;
+    margin-bottom: 5px;
 }
 #cost {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 #requirement {
 
@@ -122,25 +127,16 @@
 
 .delivery {
     color: red;
+    text-decoration-line: none;
 }
 
 #washingImg {
     width: 70px;
     height: 70px;
     float: left;
-    margin-left: 3%;
-    margin-top: 1%;
-    margin-right: 3%;
-    border-radius: 15%;
-}
-
-#washings {
-    width: 60px;
-    height: 60px;
-    float: left;
-    margin-left: 3%;
-    margin-top: 4%;
-    margin-right: 3%;
+    margin-left: 20px;
+    margin-top: 14px;
+    margin-right: 20px;
     border-radius: 15%;
 }
 
