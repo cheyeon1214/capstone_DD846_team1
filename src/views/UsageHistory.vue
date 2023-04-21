@@ -14,10 +14,12 @@
                 <div class="washingStatus">
                     <span><img id="washingImg" src="./assets/knit.jpg"></span>
                     <span>
-                        <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;니트 &nbsp;&nbsp;∙<a class="delivery" style="color: red;"> 배송중</a>
-                        </p>
+                        <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;니트 &nbsp;&nbsp;∙<a class="delivery" style="color: red;"> 배송중</a></p>
                         <p id="cost">세탁비용 | &nbsp;10,000원</p>
                         <p id="requirement">요청사항 | &nbsp;얼룩 깨끗하게 지워주세요</p>
+                        <hr id="divisionLine2">
+                        <a id="laundryName">XX 세탁소</a>&nbsp;
+                        <button id="reviewBtn">리뷰</button>
                     </span>
                 </div>
 
@@ -57,6 +59,8 @@
                         <p id="requirement">요청사항 | &nbsp;없음</p>
                     </span>
                 </div>
+
+        <br>
       </div>
     </div>
 </template>
@@ -76,6 +80,12 @@
   margin-top: 40px;
   margin-bottom: 30px;
 }
+#divisionLine2 {
+    width: 70%;
+    margin-left: 130px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 
 .date {
     margin-top: 40px;
@@ -84,7 +94,7 @@
 }
 
 .washingStatus {
-    height: 110px;
+    height: 130px;
     border-radius: 13px;
     font-size: smaller;
     background-color: white;
@@ -100,11 +110,24 @@
 }
 
 #name {
-    margin-top: 19px;
-    margin-bottom: 5px;
+    margin-top: 12px;
+    margin-bottom: 3px;
 }
 #cost {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+}
+#requirement {
+    margin-bottom: 3px;
+}
+#laundryName {
+    margin-left: 4px;
+}
+#reviewBtn {
+    width: 44px;
+    height: 23px;
+    background-color: gainsboro;
+    border-radius: 10px;
+    margin-top: 1px;
 }
 
 .delivery {
@@ -113,11 +136,11 @@
 }
 
 #washingImg {
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 100px;
     float: left;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-right: 20px;
     border-radius: 15%;
 }
