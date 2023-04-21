@@ -19,7 +19,7 @@
                         <p id="requirement">요청사항 | &nbsp;얼룩 깨끗하게 지워주세요</p>
                         <hr id="divisionLine2">
                         <a id="laundryName">XX 세탁소</a>&nbsp;
-                        <button id="reviewBtn">리뷰</button>
+                        <v-btn id="reviewBtn" to="addreview">리뷰</v-btn>
                     </span>
                 </div>
 
@@ -37,6 +37,9 @@
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;운동화 &nbsp;&nbsp;∙ <a class="delivery">배송완료(3/14)</a></p>
                         <p id="cost">세탁비용 | &nbsp;12,000원</p>
                         <p id="requirement">요청사항 | &nbsp;변색 복구 부탁드립니다</p>
+                        <hr id="divisionLine2">
+                        <a id="laundryName">XX 세탁소</a>&nbsp;
+                        <v-btn id="reviewBtn" to="addreview">리뷰</v-btn>
                     </span>
                 </div>
                 <div class="washingStatus">
@@ -45,6 +48,9 @@
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;청바지 &nbsp;&nbsp;∙ <a class="delivery">배송완료(3/14)</a></p>
                         <p id="cost">세탁비용 | &nbsp;13,000원</p>
                         <p id="requirement">요청사항 | &nbsp;기장 2cm 줄여주세요</p>
+                        <hr id="divisionLine2">
+                        <a id="laundryName">XX 세탁소</a>&nbsp;
+                        <v-btn id="reviewBtn" to="addreview">리뷰</v-btn>
                     </span>
                 </div>
 
@@ -57,6 +63,9 @@
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목&nbsp; | &nbsp;종합세탁물 &nbsp;&nbsp;∙ <a class="delivery">배송완료(3/12)</a></p>
                         <p id="cost">세탁비용 | &nbsp;10,000원</p>
                         <p id="requirement">요청사항 | &nbsp;없음</p>
+                        <hr id="divisionLine2">
+                        <a id="laundryName">XX 세탁소</a>&nbsp;
+                        <v-btn id="reviewBtn" to="addreview">리뷰</v-btn>
                     </span>
                 </div>
 
@@ -81,8 +90,8 @@
   margin-bottom: 30px;
 }
 #divisionLine2 {
-    width: 70%;
-    margin-left: 130px;
+    width: 65%;
+    margin-left: 100px;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -123,11 +132,12 @@
     margin-left: 4px;
 }
 #reviewBtn {
-    width: 44px;
-    height: 23px;
+    width: 10px;
+    height: 24px;
     background-color: gainsboro;
     border-radius: 10px;
     margin-top: 1px;
+    box-shadow: none;
 }
 
 .delivery {
@@ -136,12 +146,12 @@
 }
 
 #washingImg {
-    width: 90px;
+    width: 80px;
     height: 100px;
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 15px;
-    margin-right: 20px;
+    margin-right: 17px;
     border-radius: 15%;
 }
 
