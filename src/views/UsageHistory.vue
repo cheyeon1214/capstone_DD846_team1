@@ -96,7 +96,7 @@
     margin-top: 10px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #name {
