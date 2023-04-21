@@ -1,18 +1,21 @@
-<!--사용자 이용내역 화면-->
+<!--사용자 이용내역-->
 
 <template>
-    <div class="container" id="app">
-        <div class="wrapper">
-
-            <div class="history">
-                <h4>이용내역</h4>
-                <hr id="historyLine">
-            </div>
-
-            <div class="content">
-
-                <div class="myWashing">
-                    <h4>내 세탁물</h4>
+    <div class="wrapper">
+      <div class="content">
+        <v-carousel cycle height="250" hide-delimiter-background show-arrows="hover">
+          <v-carousel-item v-for="(slide, i) in slides" :key="i">
+            <v-sheet :color="colors[i]" height="100%">
+              <div class="d-flex fill-height justify-center align-center">
+                <div class="text-h2">
+                  {{ slide }} Slide
+                </div>
+              </div>
+            </v-sheet>
+          </v-carousel-item>
+        </v-carousel>
+        <div class="myWashing">
+                    <h5><b>내 세탁물</b></h5>
                 </div>
 
                 <div class="date" id="date">
@@ -31,7 +34,7 @@
 
                 <hr id="myHistoryLine">
                 <div class="myHistory">
-                    <h4>세탁 내역</h4>
+                    <h5><b>세탁 내역</b></h5>
                 </div>
 
                 <div class="date" id="date">
@@ -67,94 +70,35 @@
                 </div>
 
                 <br>
-            </div>
 
-            <!-- 스크립트 주석되어있어서 click 이벤트 실행 안되는거같아요
-            넷바 컴포넌트 만든거 있어서 전체적으로 주석처리 해놀게요 -->
-            <!-- <div class="nav">
-                <span @click="goToHome" @mouseover="changeCursor" @mouseout="changeCursor2">
-                <span><a @click.prevent="gotoHome('/Home')"><img id="home" src="./assets/home.png"></a></span>
-                <span><img id="request" src="./assets/request.png"></span>
-                <span><img id="history" src="./assets/history.png"></span>
-                <span><img id="mypage" src="./assets/my.png"></span>
-            </div> -->
-
-
-        </div>
+      </div>
     </div>
 </template>
-  
-<!-- 스크립트 중복 오류로 전체 주석처리 했습니다 -->
-  
-<!-- <script src="https://unpkg.com/vue@next"></script>
-  <script src="https://unpkg.com/vue-router@4"></script>
-  
-  <script>
-  
-  export default {
-    methods: {
-      goToHome() {
-        this.$router.push('/Home.vue');
-      },
-      changeCursor() {
-        document.body.style.cursor = "pointer";
-      },
-      changeCursor2() {
-        document.body.style.cursor = "mouse";
-      }
+
+<script>
+export default {
+  data() {
+    return {
+      colors: [
+        'indigo',
+        'warning',
+        'pink darken-2',
+        'red lighten-1',
+        'deep-purple accent-4',
+      ],
+      slides: [
+        'First',
+        'Second',
+        'Third',
+        'Fourth',
+        'Fifth',
+      ],
     }
-  }
-  
-        
-        const Home = { template: '<div>홈 페이지</div>' };
-        const Request = { template: '<div>세탁신청 페이지</div>' };
-        const History = { template: '<div>이용내역 페이지</div>' };
-        const Mypage = { template: '<div>마이 페이지</div>' };
-  
-        const routes = [
-          { path: '/Home', component: Home },
-          { path: '/Request', component: Request },
-          { path: '/History', component: History },
-          { path: '/Mypage', component: Mypage }
-        ];
-  
-        const router = VueRouter.createRouter({
-          history: VueRouter.createWebHistory(),
-          routes
-        });
-  
-        const app = Vue.createApp({
-          methods: {
-            gotoRoute(route) {
-              this.$router.push(route);
-            }
-          }
-        });
-  
-        app.use(router);
-        app.mount('#app');
-        
-  </script> -->
-  
-  <!-- 태그 중첩되서 scoped 처리 했습니다 -->
-<style scoped>
-.wrapper {
-    width: 370px;
-    height: 650px;
-    background-color: #fff;
-    box-shadow: 0 0 4px rgba(0.2, 0, 0, 0.5);
+  },
 }
+</script>
 
-.content {
-    height: 577px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.content::-webkit-scrollbar {
-    width: 2px;
-    /* 스크롤바의 너비 */
-}
+<style>
 
 .history {
     text-align: center;
@@ -162,31 +106,25 @@
     margin-top: -2%;
     margin-right: 2%;
     position: fixed;
-    width: 370px;
     background-color: white;
     top: 30px;
     /*고정 위치 지정*/
 }
 
-#historyLine {
-    width: 342px;
-    position: fixed;
-    top: 45px;
-    left: 22px;
-}
-
 .myWashing {
     margin-left: 6%;
-    padding-top: 11%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
+
+#myHistoryLine {
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .myHistory {
     margin-left: 6%;
-    margin-top: -1.1%;
-}
-
-#myHistoryLine {
-    width: 342px;
+    margin-top: 3%;
 }
 
 .date {
@@ -195,23 +133,24 @@
 }
 
 .washingStatus {
-    width: 350px;
     height: 85px;
     border-radius: 13px;
     font-size: smaller;
     background-color: white;
     border: 1px solid gainsboro;
     font-display: center;
-    margin-left: 2.5%;
+    margin: 5%;
     margin-top: 1.5%;
 }
 
 #name {
-    margin-bottom: -2.6%;
+  margin-bottom: 5px;
 }
-
 #cost {
-    margin-bottom: -2.6%;
+  margin-bottom: 5px;
+}
+#requirement {
+
 }
 
 .delivery {
@@ -219,14 +158,13 @@
 }
 
 .washingHistory {
-    width: 350px;
     height: 85px;
     border-radius: 13px;
     font-size: smaller;
     background-color: white;
     border: 1px solid gainsboro;
     font-display: center;
-    margin-left: 2.5%;
+    margin: 5%;
     margin-top: 1.5%;
 }
 
@@ -235,7 +173,7 @@
     height: 70px;
     float: left;
     margin-left: 3%;
-    margin-top: 2%;
+    margin-top: 1%;
     margin-right: 3%;
     border-radius: 15%;
 }
@@ -250,83 +188,4 @@
     border-radius: 15%;
 }
 
-/* navbar */
-.nav {
-    width: 23.2%;
-    height: 9%;
-    background-color: #fff;
-    margin-top: 5.2%;
-    box-shadow: 0 0 4px rgba(0.2, 0, 0, 0.5);
-    border-radius: 20px 20px 0 0;
-    position: fixed;
-    top: 508px;
-    left: 9px;
-    right: 0px;
-}
-
-#home {
-    width: 40px;
-    height: 48px;
-    margin-left: 8%;
-    margin-bottom: 9%;
-}
-
-#request {
-    width: 37px;
-    height: 46px;
-    margin-top: 3%;
-    margin-right: 15%;
-    margin-bottom: 9%;
-    margin-left: 12%;
-}
-
-#history {
-    width: 34px;
-    height: 46px;
-    margin-top: -5%;
-    margin-right: 12%;
-    margin-bottom: 9%;
-}
-
-#mypage {
-    width: 42px;
-    height: 49px;
-    margin-top: -3%;
-    margin-bottom: 8.7%;
-}
 </style>
-  
-  <!--통신-->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
-  <script>
-  
-    import axios from 'axios';
-  
-    axios.get('/api/order')  //해당 api로 변경
-    .then(function (response) {
-      var data = response.data;
-  
-      // 세탁물 이미지
-      var image = document.createElement('img');
-      image.src = data.image;
-      document.getElementById('washingImg').appendChild(washingImg);
-  
-      //날짜
-      document.getElementById('date').textContent = data.date;
-  
-      // 세탁물 품목
-      document.getElementById('name').textContent = data.name;
-  
-      // 세탁 비용
-      document.getElementById('cost').textContent = data.cost;
-  
-      // 요청사항
-      document.getElementById('requirement').textContent = data.requirement;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  
-  </script>
-   -->
