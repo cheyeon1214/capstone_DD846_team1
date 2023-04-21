@@ -3,17 +3,7 @@
 <template>
     <div class="wrapper">
       <div class="content">
-        <v-carousel cycle height="250" hide-delimiter-background show-arrows="hover">
-          <v-carousel-item v-for="(slide, i) in slides" :key="i">
-            <v-sheet :color="colors[i]" height="100%">
-              <div class="d-flex fill-height justify-center align-center">
-                <div class="text-h2">
-                  {{ slide }} Slide
-                </div>
-              </div>
-            </v-sheet>
-          </v-carousel-item>
-        </v-carousel>
+        <v-carousel cycle height="250" hide-delimiter-background show-arrows="hover"></v-carousel>
         <div class="myWashing">
                     <h5><b>내 세탁물</b></h5>
                 </div>
@@ -40,7 +30,7 @@
                 <div class="date" id="date">
                     <b>2023.03.11</b>
                 </div>
-                <div class="washingHistory">
+                <div class="washingStatus">
                     <span><img id="washingImg" src="./assets/shoes.jpg"></span>
                     <span>
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목 | 운동화 &nbsp;∙ <a class="delivery">배송완료(3/14)</a></p>
@@ -48,7 +38,7 @@
                         <p id="requirement">요청사항 | 변색 복구 부탁드립니다</p>
                     </span>
                 </div>
-                <div class="washingHistory">
+                <div class="washingStatus">
                     <span><img id="washingImg" src="./assets/jean.jpg"></span>
                     <span>
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목 | 청바지 &nbsp;∙ <a class="delivery">배송완료(3/14)</a></p>
@@ -60,7 +50,7 @@
                 <div class="date" id="date">
                     <b>2023.03.10</b>
                 </div>
-                <div class="washingHistory">
+                <div class="washingStatus">
                     <span><img id="washings" src="./assets/washings.png"></span>
                     <span>
                         <p id="name"> 품 &nbsp;&nbsp;&nbsp; 목 | 종합 세탁물 &nbsp;∙ <a class="delivery">배송완료(3/12)</a></p>
@@ -74,29 +64,6 @@
       </div>
     </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4',
-      ],
-      slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth',
-      ],
-    }
-  },
-}
-</script>
 
 <style>
 
@@ -155,17 +122,6 @@ export default {
 
 .delivery {
     color: red;
-}
-
-.washingHistory {
-    height: 85px;
-    border-radius: 13px;
-    font-size: smaller;
-    background-color: white;
-    border: 1px solid gainsboro;
-    font-display: center;
-    margin: 5%;
-    margin-top: 1.5%;
 }
 
 #washingImg {
