@@ -4,7 +4,6 @@
     <div class="wrapper">
       <div class="content">
         <v-carousel cycle height="10" hide-delimiter-background show-arrows="hover"></v-carousel>
-
             <div class="myWashing">
                 <b>내 세탁물</b>
             </div>
@@ -63,7 +62,6 @@
     margin-left: 6%;
     font-size: 15px;
 }
-
 
 .washingStatus {
     height: 141px;
