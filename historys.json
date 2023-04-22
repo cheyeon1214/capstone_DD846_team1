@@ -3,6 +3,7 @@
         {
             "id": 1,
             "date": "2023.03.18",
+            "washingImg": "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
             "name": "니트",
             "delivery": "배송중",
             "cost": "10,000원",
@@ -12,6 +13,7 @@
         {
             "id": 2,
             "date": "2023.03.11",
+            "washingImg": "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
             "name": "운동화",
             "delivery": "배송완료(3/14)",
             "cost": "12,000원",
@@ -21,6 +23,7 @@
         {
             "id": 3,
             "date": "2023.03.11",
+            "washingImg": "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
             "name": "청바지",
             "delivery": "배송완료(3/14)",
             "cost": "13,000원",
@@ -30,6 +33,7 @@
         {
             "id": 4,
             "date": "2023.03.10",
+            "washingImg": "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
             "name": "종합세탁물",
             "delivery": "배송완료(3/12)",
             "cost": "10,000원",

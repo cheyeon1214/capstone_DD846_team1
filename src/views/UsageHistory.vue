@@ -17,7 +17,7 @@
                 </div>
                 <v-card v-bind:key="h.id" elevation="0">
                     <div class="washingStatus">
-                        <v-img id="washingImg" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg" cover></v-img>
+                        <v-img id="washingImg" :src="h.washingImg" cover></v-img>
                         <v-card-text>
                             <div id="name">
                                 품&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;|&nbsp;&nbsp;{{ h.name }}
