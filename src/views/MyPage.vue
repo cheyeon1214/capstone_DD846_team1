@@ -81,8 +81,38 @@
                     </v-card>
                   </v-col>
                 </v-row>
+
+                    <v-card color="white" style="border-radius: 0%; margin-top: -10px; box-shadow: none;">
+                        <v-divider class="mx-1 mb-1"></v-divider>
+                        <v-card-title style="margin-bottom: 5px; font-size: 16px;">단골 세탁소 정보</v-card-title>
+                        <v-card-subtitle>
+                            <div id="operatingHour">운영시간 : {{ mp.operatingHour }}</div>
+                            <div id="dayOff">휴무일 : {{ mp.dayOff }}</div>
+                            <div id="laundryNumber" style="margin-bottom: 4px;">전화 : {{ mp.laundryNumber }}</div>
+                        </v-card-subtitle>
+                        <v-divider class="mx-1 mb-1"></v-divider>
+                    </v-card>
+
+                    <v-row style="margin-top: 1px;">
+                      <v-col>
+                        <v-card-actions style="margin-right: -30px;">
+                            <v-btn style="width: 210px; background-color: #5E5A80; color: white; border-radius: 8px;" to="notice">
+                                공지사항
+                            </v-btn>
+                        </v-card-actions>
+                      </v-col>
+                      <v-col>
+                        <v-card-actions style="margin-left: -10px;">
+                            <v-btn variant="outlined" style="width: 210px; border-color: #5E5A80; border-radius: 8px;">
+                                로그아웃 <!--연결 필요-->
+                            </v-btn>
+                        </v-card-actions>
+                      </v-col>
+                    </v-row>
+
+
             </v-container>
-            <v-divider class="mx-1 mb-1"></v-divider><br>
+            <br>
         </v-card>
     </div>
 </template>
