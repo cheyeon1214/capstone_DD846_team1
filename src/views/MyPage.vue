@@ -2,7 +2,7 @@
 
 <template>
     <div class="mypage">
-        <v-card class="mx-auto my-5" max-width="500" flat>
+        <v-card class="mx-auto my-5" max-width="500" flat v-for="mp in mypage" :key="mp.id" elevation="0">
             <div class="align-end text-black" height="150">
                 <v-row>
                     <v-col style="margin-left: 30px; margin-right: -280px; margin-top: 24px;">
@@ -10,8 +10,8 @@
                     </v-col>
                     <v-col style="margin-top: 14px;">
                         <v-card-text id="userInfo">
-                            <div id="userName" style="font-size: large;"><b>XXX 고객님</b></div>
-                            <div id="userAddr" style="margin-top: 5px;">경기도 수원시</div>
+                            <div id="userName" style="font-size: large;"><b>{{ mp.userName }}</b></div>
+                            <div id="userAddr" style="margin-top: 5px;">{{ mp.userAddr }}</div>
                         </v-card-text>
                     </v-col>
                     <v-col style="margin-top: 30px; margin-right: -230px;">
@@ -29,7 +29,9 @@
                         <v-col xs3 style="margin-left: 35px;">
                             <v-card-subtitle>이용내역</v-card-subtitle>
                             <v-card-actions>
-                              <v-btn class="text-h5" style="margin-left: 2px;" color="white" to="usagehistory">32</v-btn>
+                              <v-btn class="text-h5" id="countHistory" style="margin-left: 2px;" color="white" to="usagehistory">
+                                {{ mp.countHistory }}
+                              </v-btn>
                             </v-card-actions>
                         </v-col>
                         <v-divider vertical style="margin-left: -20px; margin-bottom: 30px; margin-right: 15px;"></v-divider>
@@ -37,7 +39,9 @@
                         <v-col xs3 style="margin-left: 8px;">
                             <v-card-subtitle>작성리뷰</v-card-subtitle>
                             <v-card-actions>
-                              <v-btn class="text-h5" style="margin-left: 2px;" color="white" to="reviewlist">11</v-btn>
+                              <v-btn class="text-h5" id="countReview" style="margin-left: 2px;" color="white" to="reviewlist">
+                                {{ mp.countReview }}
+                              </v-btn>
                             </v-card-actions>
                         </v-col>
                         <v-divider vertical style="margin-left: -15px; margin-bottom: 30px; margin-right: 10px;"></v-divider>
@@ -45,7 +49,7 @@
                         <v-col xs3 style="margin-left: 12px;">
                             <v-card-subtitle style="margin-left: 10px;">Q&A</v-card-subtitle>
                             <v-card-actions>
-                              <v-btn class="text-h5" color="white" to="qna">2</v-btn>
+                              <v-btn class="text-h5" id="countQnA" color="white" to="qna">{{ mp.countQnA }}</v-btn>
                             </v-card-actions>
                         </v-col>
                       </v-row>
@@ -58,14 +62,14 @@
                         <v-card-title class="text-h7" style="margin-top: 10px; margin-bottom: 5px;">단골 세탁소</v-card-title>
 
                         <v-card-subtitle>
-                            <div id="laundryName">XX 세탁소</div>
-                            <div id="laundryAddr">경기도 수원시</div>
+                            <div id="laundryName">{{ mp.laundryName }}</div>
+                            <div id="laundryAddr">{{ mp.laundryAddr }}</div>
                         </v-card-subtitle>
                         
-                        <v-row align="center" class="mx-0">
-                            <v-rating :model-value=5 color="amber" density="compact" 
+                        <v-row class="mx-0">
+                            <v-rating :model-value=mp.stars color="amber" density="compact" 
                                 half-increments readonly size="small" style="margin-left: 15px; margin-top: 20px;"></v-rating>
-                            <div class="text-grey ms-2" style="font-size: 15px; margin-top: 23px;">5</div>
+                            <div class="text-grey ms-2" style="font-size: 15px; margin-top: 23px;">{{ mp.stars }}</div>
                         </v-row>
                        </div>
 
@@ -82,3 +86,22 @@
         </v-card>
     </div>
 </template>
+
+<script>
+import axios from "axios";
+
+export default {
+    data: () => ({
+        show: false,
+        mypage: []
+    }),
+    async created() {
+        try {
+            const res = await axios.get('http://localhost:3003/mypage');
+            this.mypage = res.data;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
+</script>
