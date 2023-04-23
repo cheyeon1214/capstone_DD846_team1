@@ -16,6 +16,7 @@ import ReviewListVue from '@/views/ReviewList.vue'
 import EditProfileVue from '@/views/EditProfile.vue'
 import FavoriteLaundryVue from '@/views/FavoriteLaundry.vue'
 import QnAVue from '@/views/QnA.vue'
+import NoticeVue from '@/views/Notice.vue'
 
 const routes = [
   {
@@ -84,6 +85,11 @@ const routes = [
     path: '/qna',
     name: 'qna',
     component: QnAVue
+  },
+  {
+    path: '/notice',
+    name: 'notice',
+    component: NoticeVue
   },
 ]
 
