@@ -1,0 +1,15 @@
+{
+    "mypage": [
+        {
+            "id": 1,
+            "userName": "XXX 고객님",
+            "userAddr": "경기도 수원시",
+            "countHistory": "32",
+            "countReview": "11",
+            "countQnA": "2",
+            "laundryName": "XX 세탁소",
+            "laundryAddr": "경기도 수원시",
+            "stars": 4.5
+        }
+    ]
+}
