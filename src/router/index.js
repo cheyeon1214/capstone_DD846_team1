@@ -12,6 +12,10 @@ import LoginFormVue from '@/views/LoginForm.vue'
 import SignUpFormVue from '@/views/SignUpForm.vue'
 
 import AddReviewVue from '@/views/AddReview.vue'
+import ReviewListVue from '@/views/ReviewList.vue'
+import EditProfileVue from '@/views/EditProfile.vue'
+import FavoriteLaundryVue from '@/views/FavoriteLaundry.vue'
+import QnAVue from '@/views/QnA.vue'
 
 const routes = [
   {
@@ -60,6 +64,26 @@ const routes = [
     path: '/addreview',
     name: 'addreview',
     component: AddReviewVue
+  },
+  {
+    path: '/reviewlist',
+    name: 'reviewlist',
+    component: ReviewListVue
+  },
+  {
+    path: '/editprofile',
+    name: 'editprofile',
+    component: EditProfileVue
+  },
+  {
+    path: '/favoritelaundry',
+    name: 'favoritelaundry',
+    component: FavoriteLaundryVue
+  },
+  {
+    path: '/qna',
+    name: 'qna',
+    component: QnAVue
   },
 ]
 
