@@ -96,7 +96,7 @@
                     <v-row style="margin-top: 1px;">
                       <v-col>
                         <v-card-actions style="margin-right: -30px;">
-                            <v-btn style="width: 210px; background-color: #5E5A80; color: white; border-radius: 8px;" to="notice">
+                            <v-btn style="width: 210px; background-color: #5E5A80; color: white; border-radius: 8px;" to="wwnotice">
                                 공지사항
                             </v-btn>
                         </v-card-actions>
@@ -109,8 +109,6 @@
                         </v-card-actions>
                       </v-col>
                     </v-row>
-
-
             </v-container>
             <br>
         </v-card>
