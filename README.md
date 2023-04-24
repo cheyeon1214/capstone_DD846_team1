@@ -1,4 +1,4 @@
-# wwmanager s
+# wwmanager
 
 ## Project setup
 ```
