@@ -20,6 +20,9 @@ import WWNoticeVue from '@/views/WWNotice.vue'
 import NoticeDetail1Vue from '@/views/NoticeDetail1.vue'
 import NoticeDetail2Vue from '@/views/NoticeDetail2.vue'
 
+import QnA1Vue from '@/views/QnA1.vue'
+import QnA2Vue from '@/views/QnA2.vue'
+
 const routes = [
   {
     path: '/',
@@ -102,6 +105,16 @@ const routes = [
     path: '/noticedetail2',
     name: 'noticedetail2',
     component: NoticeDetail2Vue
+  },
+  {
+    path: '/qna1',
+    name: 'qna1',
+    component: QnA1Vue
+  },
+  {
+    path: '/qna2',
+    name: 'qna2',
+    component: QnA2Vue
   },
 ]
 

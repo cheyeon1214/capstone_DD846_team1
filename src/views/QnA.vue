@@ -11,7 +11,7 @@
             <v-row>
               <v-col style="height: 80px;">
                 <v-card-actions>
-                    <v-btn class="notice" style="width: 210px; font-size: medium; margin-left: 1px; margin-bottom: -20px;" to="QnA_1.vue">
+                    <v-btn class="notice" style="width: 210px; font-size: medium; margin-left: 1px; margin-bottom: -20px;" to="qna1">
                         <b>질문 1</b>
                     </v-btn>
                 </v-card-actions>
@@ -21,7 +21,7 @@
               <v-col  style="height: 80px;">
                 <v-card-actions>
                     <v-btn class="notice" style="width: 210px; font-size: medium; margin-left: -39px; margin-top: -21px;" 
-                            to="QnA_2.vue">
+                            to="qna2">
                         <b>질문 2</b>
                     </v-btn>
                 </v-card-actions>
