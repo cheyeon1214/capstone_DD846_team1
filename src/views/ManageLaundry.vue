@@ -42,7 +42,7 @@
 
 <script>
 import axios from 'axios';
-const baseURL = "http://localhost:3000/managelaundrys";
+const baseURL = "http://localhost:3005/managelaundrys";
 
 export default {
     data() {
@@ -81,7 +81,6 @@ export default {
                         notice: this.notice,
                         image: this.image
                     });
-                    console.log('응답 데이터:', res.data);
 
                     this.managelaundrys = [...this.managelaundrys, res.data];
                 } catch (e) {
