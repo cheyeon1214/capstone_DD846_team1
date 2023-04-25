@@ -1,5 +1,5 @@
 <template>
-  <!-- <HelloWorld /> -->
+  <!-- <HelloWorld />ㅇ -->
   <!-- 상단 슬라이드 -->
   <v-carousel cycle height="250" hide-delimiter-background show-arrows="hover">
     <v-carousel-item v-for="(slide, i) in slides" :key="i">
