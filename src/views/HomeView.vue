@@ -33,7 +33,7 @@
         </v-col>
       </v-row>
     </v-container> -->
-    <v-card
+    <v-card to="managelaundry"
       class="mx-auto my-10"
       width="300"
       prepend-icon="mdi-washing-machine"
@@ -47,7 +47,7 @@
       </v-card-text>
     </v-card>
 
-    <v-card
+    <v-card to="manageproduct"
       class="mx-auto my-10"
       width="300"
       prepend-icon="mdi-tshirt-crew"
@@ -61,7 +61,7 @@
       </v-card-text>
     </v-card>
 
-    <v-card
+    <v-card to="managereview"
       class="mx-auto my-10"
       width="300"
       prepend-icon="mdi-message-reply-text-outline"
