@@ -1,7 +1,7 @@
 <!--세탁소 관리-->
 
 <template>
-    <v-card class="mx-auto my-5" max-width="400" title="세탁소 관리" elevation="0">
+    <v-card class="mx-auto my-5" max-width="400" title="세탁소 관리" elevation="0"><br>
         <v-container>
             <v-text-field v-model="name" :rules="[rules.required]" 
                 color="blue" label="세탁소명" placeholder="세탁소 이름을 입력해주세요" variant="underlined"></v-text-field><br>
