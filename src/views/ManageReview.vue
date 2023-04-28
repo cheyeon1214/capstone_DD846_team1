@@ -1,7 +1,11 @@
 <!--리뷰 관리-->
 
 <template>
-    <v-card class="mx-auto my-5" max-width="400" title="리뷰 관리" elevation="0"><br>
+    <v-card class="mx-auto my-5" max-width="400" elevation="0"><br>
+      <div class="myWashing" style="text-align: center; font-size: 18px; margin-top: -4%; margin-bottom: 8%;">
+        <a>리뷰 관리</a>
+        <v-divider class="mx-1 mb-1" style="margin-top: 4%;"></v-divider>
+      </div>
         <v-card  v-for="r in reviews" :key="r.id" elevation="0"  style="margin-bottom: 10px;">
             <v-card-text style="margin-bottom: -5px;">
                 <span id="userID" style="font-weight: bold; font-size: 15px;">
