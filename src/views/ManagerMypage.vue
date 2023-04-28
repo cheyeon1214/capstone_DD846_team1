@@ -1,21 +1,21 @@
 <!--사장님 mypage-->
 
 <template>
-    <div class="mypage">
-        <v-card class="mx-auto my-5" max-width="500" flat v-for="mp in managermypage" :key="mmp.id" elevation="0">
+    <div class="managermypage">
+        <v-card class="mx-auto my-5" max-width="500" flat v-for="mmp in managermypage" :key="mmp.id" elevation="0">
             <div class="align-end text-black" height="150">
-                <v-row>
+                <v-row style="margin-bottom: 5px;">
                     <v-col style="margin-left: 30px; margin-right: -45%; margin-top: 24px;">
                         <v-icon icon="mdi-account-circle" size="55"></v-icon>
                     </v-col>
                     <v-col style="margin-top: 14px;">
-                        <v-card-text id="userInfo">
+                        <v-card-text id="managerInfo">
                             <div id="managerName" style="font-size: large;"><b>{{ mmp.managerName }}</b></div>
-                            <div id="laundryAddr" style="margin-top: 5px;">{{ mmp.laundryName }} / {{ mmp.laundryAddr }}</div>
+                            <div id="laundryInfo" style="margin-top: 5px;">{{ mmp.laundryName }} / {{ mmp.laundryAddr }}</div>
                         </v-card-text>
                     </v-col>
                     <v-col style="margin-top: 30px; margin-right: -35%;">
-                        <v-btn icon="mdi-wrench" color="white" size="40" to="editprofile"></v-btn>
+                        <v-btn icon="mdi-wrench" color="white" size="40" to="editmanagerprofile"></v-btn>
                     </v-col>
                 </v-row>
                 <v-divider class="mx-1 mb-1"></v-divider><br>
@@ -39,7 +39,7 @@
                         <v-col xs3>
                             <v-card-subtitle>리뷰확인</v-card-subtitle>
                             <v-card-actions>
-                              <v-btn class="text-h5" id="countReview" style="margin-left: 2px;" color="white" to="reviewlist">
+                              <v-btn class="text-h5" id="countReview" style="margin-left: 2px;" color="white" to="checkreviewlist">
                                 {{ mmp.countReview }}
                               </v-btn>
                             </v-card-actions>
@@ -57,9 +57,9 @@
                   </v-col>
         
                   <v-col cols="12">
-                    <v-card class="card-hover" color="#5E5A80" theme="dark" to="favoritelaundry" style="color: white;">
+                    <v-card class="card-hover" color="#5E5A80" theme="dark" to="mylaundry" style="color: white;">
                         <div class="d-flex flex-no-wrap justify-space-between"><div style="margin-left: 15px;">
-                        <v-card-title class="text-h7" style="margin-top: 10px; margin-bottom: 5px;">단골 세탁소</v-card-title>
+                        <v-card-title class="text-h7" style="margin-top: 10px; margin-bottom: 5px;">내 세탁소</v-card-title>
 
                         <v-card-subtitle>
                             <div id="laundryName">{{ mmp.laundryName }}</div>
@@ -69,7 +69,6 @@
                         <v-row class="mx-0">
                             <v-rating :model-value=mmp.stars color="amber" density="compact" 
                                 half-increments readonly size="small" style="margin-left: 15px; margin-top: 20px;"></v-rating>
-                            <!--<div class="text-grey ms-2" style="font-size: 15px; margin-top: 16%;">{{ mp.stars }}</div>-->
                         </v-row>
                        </div>
 
@@ -82,13 +81,13 @@
                   </v-col>
                 </v-row>
 
-                    <v-card color="white" style="border-radius: 0%; margin-top: -10px; box-shadow: none;">
+                    <v-card color="white" style="border-radius: 0%; margin-top: 15px; box-shadow: none;">
                         <v-divider class="mx-1 mb-1"></v-divider>
-                        <v-card-title style="margin-bottom: 5px; font-size: 16px;">단골 세탁소 정보</v-card-title>
+                        <v-card-title style="margin-bottom: 5px; font-size: 16px;">내 세탁소 정보</v-card-title>
                         <v-card-subtitle>
                             <div id="operatingHour">운영시간 : {{ mmp.operatingHour }}</div>
                             <div id="dayOff">휴무일 : {{ mmp.dayOff }}</div>
-                            <div id="laundryNumber" style="margin-bottom: 4px;">전화 : {{ mmp.laundryNumber }}</div>
+                            <div id="laundryNumber" style="margin-bottom: 15px;">전화 : {{ mmp.laundryNumber }}</div>
                         </v-card-subtitle>
                         <v-divider class="mx-1 mb-1"></v-divider>
                     </v-card>
@@ -121,12 +120,12 @@ import axios from "axios";
 export default {
     data: () => ({
         show: false,
-        mypage: []
+        managermypage: []
     }),
     async created() {
         try {
             const res = await axios.get('http://localhost:3008/managermypage');
-            this.mypage = res.data;
+            this.managermypage = res.data;
         } catch (e) {
             console.error(e);
         }
