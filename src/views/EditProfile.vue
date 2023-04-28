@@ -3,30 +3,26 @@
 <template>
     <v-card class="mx-auto my-5" max-width="400" title="프로필편집" elevation="0">
         <v-container>
-            <v-text-field v-model="name" :rules="[rules.required]" 
-                color="blue" label="이름" placeholder="이름을 입력하세요" variant="underlined"></v-text-field>
+            <v-text-field v-model="name" :rules="[rules.required]" color="blue" label="이름" placeholder="이름을 입력하세요"
+                variant="underlined"></v-text-field>
 
-            <v-text-field v-model="email" :rules="[rules.required, rules.emailRules]" 
-                color="blue" label="이메일"
+            <v-text-field v-model="email" :rules="[rules.required, rules.emailRules]" color="blue" label="이메일"
                 placeholder="이메일을 입력하세요" variant="underlined"></v-text-field>
 
 
-            <v-text-field v-model="id" :rules="[rules.required]" 
-                color="blue" label="닉네임" placeholder="닉네임을 입력하세요" variant="underlined"></v-text-field>
+            <v-text-field v-model="id" :rules="[rules.required]" color="blue" label="닉네임" placeholder="닉네임을 입력하세요"
+                variant="underlined"></v-text-field>
 
-            <v-text-field v-model="phone" :rules="[rules.required, rules.phoneRules]" 
-                color="blue" label="연락처" placeholder="연락처를 입력하세요" variant="underlined"></v-text-field>
+            <v-text-field v-model="phone" :rules="[rules.required, rules.phoneRules]" color="blue" label="연락처"
+                placeholder="연락처를 입력하세요" variant="underlined"></v-text-field>
 
-            <v-text-field v-model="password" :rules="[rules.required, rules.minRules]" 
-                :type="show1 ? 'text' : 'password'"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" 
-                @click:append="show1 = !show1" 
-                color="blue" label="비밀번호" placeholder="비밀번호를 입력하세요" variant="underlined"></v-text-field>
+            <v-text-field v-model="password" :rules="[rules.required, rules.minRules]" :type="show1 ? 'text' : 'password'"
+                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show1 = !show1" color="blue" label="비밀번호"
+                placeholder="비밀번호를 입력하세요" variant="underlined"></v-text-field>
 
             <v-text-field v-model="PasswordCheck" :rules="[rules.required, rules.passwordMatch]"
-                :type="show2 ? 'text' : 'password'" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'" 
-                @click:append="show2 = !show2" 
-                color="blue" label="비밀번호 확인" placeholder="한번 더 비밀번호를 입력하세요"
+                :type="show2 ? 'text' : 'password'" :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="show2 = !show2" color="blue" label="비밀번호 확인" placeholder="한번 더 비밀번호를 입력하세요"
                 variant="underlined">
             </v-text-field>
 
@@ -82,7 +78,6 @@ export default {
                 minRules: value => value.length >= 8 || '8자 이상 입력하세요',
                 passwordMatch: value => value === this.password || '비밀번호가 일치하지 않습니다',
             },
-            
         }
     },
     methods: {
@@ -92,12 +87,12 @@ export default {
         },
         async addUsers() {
             if (
-            this.rules.required(this.name) === true && 
-            this.rules.required(this.id) === true && 
-            this.rules.phoneRules(this.phone) === true && 
-            this.rules.emailRules(this.email) === true && 
-            this.rules.minRules(this.password) === true && 
-            this.rules.passwordMatch(this.PasswordCheck) === true
+                this.rules.required(this.name) === true &&
+                this.rules.required(this.id) === true &&
+                this.rules.phoneRules(this.phone) === true &&
+                this.rules.emailRules(this.email) === true &&
+                this.rules.minRules(this.password) === true &&
+                this.rules.passwordMatch(this.PasswordCheck) === true
             ) {
                 try {
                     const res = await axios.post(baseURL, {
@@ -112,9 +107,7 @@ export default {
                     console.error(e);
                 }
             }
-            
         },
     },
-    
 };
 </script>
