@@ -3,11 +3,7 @@
 <template>
     <div class="wrapper">
         <v-card class="mx-auto my-5" max-width="500" elevation="0">
-            <div class="myWashing">
-                <a>내 세탁물</a>
-            </div>
-            <hr id="divisionLine">
-
+            <div style="margin-top: -7%;"></div>
             <div v-for="(h, index) in historys" v-bind:key="h.id">
                 <div v-if="index === 0 || h.date !== historys[index - 1].date">
                     <div class="date" id="date">

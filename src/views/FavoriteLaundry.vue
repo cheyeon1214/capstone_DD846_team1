@@ -2,10 +2,6 @@
 
 <template>
     <div id="laund-list">
-        <div class="banner" style="text-align: center; font-size: 18px;  margin-top: 3%; margin-bottom: 8%;">
-            <a>관심 세탁소</a>
-            <v-divider class="mx-1 mb-1" max-width="500" style="margin-top: 5%;"></v-divider>
-        </div>
         <v-card class="mx-auto my-5" max-width="500" v-for="laundry in laundrys" :key="laundry.id" elevation="0">
             <v-img class="align-end text-white" id="laund-img" height="150"
                 src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MjRfMTQ3%2FMDAxNjY0MDA4MTk4MzAz.BwhTgWGfyhuJY0X5BwkEBx-MCnAp1AiontZ8lctUZcog.p1YZYnoJbu2O6wimUoYzP6ZSLj8UdUW6POKhIBcJtTMg.JPEG.sol_ji1%2FIMG_2992.jpg&type=sc960_832"
