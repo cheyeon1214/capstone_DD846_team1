@@ -2,8 +2,7 @@
 
 <template>
     <div class="wrapper">
-      <div class="content">
-        <v-carousel cycle height="10" hide-delimiter-background show-arrows="hover"></v-carousel>
+        <v-card class="mx-auto my-5" max-width="500" elevation="0">
             <div class="myWashing">
                 <b>내 세탁물</b>
             </div>
@@ -33,7 +32,7 @@
                 </v-card>
             </div>
             <br>
-        </div>
+        </v-card>
     </div>
 </template>
 
@@ -59,7 +58,7 @@
 
 .date {
     margin-top: 40px;
-    margin-left: 6%;
+    margin-left: 4%;
     font-size: 15px;
 }
 
@@ -70,8 +69,6 @@
     background-color: white;
     border: 1px solid gainsboro;
     font-display: center;
-    margin-left: 5%;
-    margin-right: 5%;
     margin-bottom: 5px;
     margin-top: 10px;
     white-space: nowrap;
@@ -94,7 +91,8 @@
 #reviewBtn {
     width: 10px;
     height: 24px;
-    background-color: gainsboro;
+    background-color: #5E5A80;
+    color: white;
     border-radius: 10px;
     margin-top: 1px;
     box-shadow: none;
