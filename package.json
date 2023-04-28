@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "managelaundrys": "json-server --watch managelaundrys.json --port 3005",
-    "reviews": "json-server --watch reviews.json --port 3006"
+    "reviews": "json-server --watch reviews.json --port 3006",
+    "replies": "json-server --watch replies.json --port 3007"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
