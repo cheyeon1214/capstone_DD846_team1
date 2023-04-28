@@ -4,7 +4,7 @@
     <div class="wrapper">
         <v-card class="mx-auto my-5" max-width="500" elevation="0">
             <div class="myWashing">
-                <b>내 세탁물</b>
+                <a>내 세탁물</a>
             </div>
             <hr id="divisionLine">
 
