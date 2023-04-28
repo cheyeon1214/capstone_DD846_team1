@@ -1,12 +1,12 @@
 {
-    "mypage": [
+    "managermypage": [
         {
             "id": 1,
             "managerName": "XXX 사장님",
             "laundryName": "OO 세탁소",
             "laundryAddr": "경기도 수원시",
-            "countHistory": "32",
-            "countReview": "11",
+            "countHistory": "77",
+            "countReview": "43",
             "countQnA": "2",
             "operatingHour": "11:00 - 18:00",
             "dayOff": "공휴일 휴무",

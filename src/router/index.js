@@ -5,6 +5,14 @@ import ManageLaundry from '../views/ManageLaundry.vue'
 import ManageProduct from '../views/ManageProduct.vue'
 import ManageReview from '../views/ManageReview.vue'
 import ManagerMypage from '../views/ManagerMypage.vue'
+import EditManagerProfile from '../views/EditManagerProfile.vue'
+import ManagerHistory from '../views/ManagerHistory.vue'
+import CheckReviewList from '../views/CheckReviewList.vue'
+import QnA from '../views/QnA.vue'
+import MyLaundry from '../views/MyLaundry.vue'
+import WWNotice from '../views/WWNotice.vue'
+import NoticeDetail1 from '../views/NoticeDetail1.vue'
+import NoticeDetail2 from '../views/NoticeDetail2.vue'
 
 const routes = [
   {
@@ -39,6 +47,46 @@ const routes = [
     path: '/managermypage',
     name: 'managermypage',
     component: ManagerMypage
+  },
+  {
+    path: '/editmanagerprofile',
+    name: 'editmanagerprofile',
+    component: EditManagerProfile
+  },
+  {
+    path: '/managerhistory',
+    name: 'managerhistory',
+    component: ManagerHistory
+  },
+  {
+    path: '/checkreviewlist',
+    name: 'checkreviewlist',
+    component: CheckReviewList
+  },
+  {
+    path: '/qna',
+    name: 'qna',
+    component: QnA
+  },
+  {
+    path: '/mylaundry',
+    name: 'mylaundry',
+    component: MyLaundry
+  },
+  {
+    path: '/wwnotice',
+    name: 'wwnotice',
+    component: WWNotice
+  },
+  {
+    path: '/noticedetail1',
+    name: 'noticedetail1',
+    component: NoticeDetail1
+  },
+  {
+    path: '/noticedetail2',
+    name: 'noticedetail2',
+    component: NoticeDetail2
   },
 ]
 
