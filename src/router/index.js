@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import ManageLaundry from '../views/ManageLaundry.vue'
 import ManageProduct from '../views/ManageProduct.vue'
 import ManageReview from '../views/ManageReview.vue'
+import ManagerMypage from '../views/ManagerMypage.vue'
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     path: '/managereview',
     name: 'managereview',
     component: ManageReview
+  },
+  {
+    path: '/managermypage',
+    name: 'managermypage',
+    component: ManagerMypage
   },
 ]
 
