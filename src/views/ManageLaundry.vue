@@ -42,7 +42,7 @@
 
 <script>
 import axios from 'axios';
-const baseURL = "http://localhost:3005/managelaundrys";
+const baseURL = "http://localhost:3005/managelaundrys"; //node.js의 해당 api 필요
 
 export default {
     data() {
@@ -72,6 +72,14 @@ export default {
             this.rules.required(this.notice) === true &&
             this.rules.required(this.image) === true
             ) {
+                console.log('<전송할 정보>',
+                            '이름:', this.name,
+                            '소개:', this.intro,
+                            '오픈시간:', this.openTime,
+                            '마감시간:', this.closeTime,
+                            '공지사항:', this.notice
+                            ); //프론트엔드에서 통신 테스트용
+
                 try {
                     const res = await axios.post(baseURL, {
                         name: this.name,
