@@ -40,44 +40,32 @@
 import axios from "axios";
 
 export default {
-    data: () => ({
-        show: false,
-        reviews: []
-    }),
-    async created() {
-        try {
-            const res = await axios.get('http://localhost:3006/reviews');
-            this.reviews = res.data;
-        } catch (e) {
-            console.error(e);
-        }
+  data: () => ({
+    show: false,
+    reviews: [],
+    reply: "", // 답글 입력을 위한 변수 추가
+  }),
+  async created() {
+    try {
+      const res = await axios.get("http://localhost:3006/reviews");
+      this.reviews = res.data;
+    } catch (e) {
+      console.error(e);
     }
-}
-</script>
-
-
-<!--<script>
-import axios from "axios";
-
-export default {
-    data: () => ({
-        show: false,
-        reviews: [],
-        reply: "", 
-    }),
-    async created() {
-        try {
-            const res = await axios.get('http://localhost:3006/reviews');
-            this.reviews = res.data;
-            this.sendReply(); // sendReply 함수 호출
-        } catch (e) {
-            console.error(e);
-        }
-    },
-    methods: {
+  },
+  methods: {
     async sendReply() {
-        console.log('전송할 답글 정보:', this.reply);
-    }
-}
-}
-</script>-->
+        console.log('전송할 답글 정보:', this.reply); //프론트엔드에서 통신 테스트용
+      try {
+        const response = await axios.post('http://localhost:3007/replies', { //node.js의 해당 api 필요
+        reply: this.reply
+      });
+      console.log(response.data); // POST 요청에 대한 응답
+      this.reply = ''; // 입력 필드 비우기    
+    } catch (e) {
+        console.error(e);
+      }
+    },
+  },
+};
+</script>
