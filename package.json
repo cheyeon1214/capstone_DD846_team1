@@ -9,7 +9,8 @@
     "managelaundrys": "json-server --watch managelaundrys.json --port 3005",
     "reviews": "json-server --watch reviews.json --port 3006",
     "replies": "json-server --watch replies.json --port 3007",
-    "managermypage": "json-server --watch managermypage.json --port 3008"
+    "managermypage": "json-server --watch managermypage.json --port 3008",
+    "mylaundrys": "json-server --watch mylaundrys.json --port 3009"
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
