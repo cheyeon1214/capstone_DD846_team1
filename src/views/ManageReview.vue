@@ -2,7 +2,7 @@
 
 <template>
     <v-card class="mx-auto my-5" max-width="400" elevation="0"><br>
-      <div class="myWashing" style="text-align: center; font-size: 18px; margin-top: -4%; margin-bottom: 8%;">
+      <div class="reviewList" style="text-align: center; font-size: 18px; margin-top: -4%; margin-bottom: 8%;">
         <a>리뷰 관리</a>
         <v-divider class="mx-1 mb-1" style="margin-top: 4%;"></v-divider>
       </div>
