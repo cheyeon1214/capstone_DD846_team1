@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import ManageLaundry from '../views/ManageLaundry.vue'
 import ManageProduct from '../views/ManageProduct.vue'
 import ManageReview from '../views/ManageReview.vue'
+
 import ManagerMypage from '../views/ManagerMypage.vue'
 import EditManagerProfile from '../views/EditManagerProfile.vue'
 import ManagerHistory from '../views/ManagerHistory.vue'
@@ -13,6 +14,9 @@ import MyLaundry from '../views/MyLaundry.vue'
 import WWNotice from '../views/WWNotice.vue'
 import NoticeDetail1 from '../views/NoticeDetail1.vue'
 import NoticeDetail2 from '../views/NoticeDetail2.vue'
+
+import ManageOrder from '../views/ManageOrder.vue'
+
 
 const routes = [
   {
@@ -87,6 +91,11 @@ const routes = [
     path: '/noticedetail2',
     name: 'noticedetail2',
     component: NoticeDetail2
+  },
+  {
+    path: '/manageorder',
+    name: 'manageorder',
+    component: ManageOrder
   },
 ]
 

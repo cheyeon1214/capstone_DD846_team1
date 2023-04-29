@@ -5,12 +5,12 @@
             <span>HOME</span>
         </v-btn>
 
-        <v-btn >
+        <v-btn to="/">
             <v-icon>mdi-washing-machine</v-icon>
             <span>내세탁소</span>
         </v-btn>
 
-        <v-btn >
+        <v-btn to="manageorder">
             <v-icon>mdi-format-list-bulleted</v-icon>
             <span>주문관리</span>
         </v-btn>
