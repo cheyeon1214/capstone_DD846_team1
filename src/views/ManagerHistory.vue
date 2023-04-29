@@ -1,27 +1,24 @@
-<!--판매 내역-->
+<!--판매내역-->
 
 <template>
     <div class="wrapper">
         <v-card class="mx-auto my-5" max-width="500" elevation="0">
             <div style="margin-top: -7%;"></div>
-            <div v-for="(h, index) in historys" v-bind:key="h.id">
-                <div v-if="index === 0 || h.date !== historys[index - 1].date">
+            <div v-for="(lh, index) in laundryhistorys" v-bind:key="lh.id">
+                <div v-if="index === 0 || lh.date !== laundryhistorys[index - 1].date">
                     <div class="date" id="date">
-                        <b>{{ h.date }}</b>
+                        <b>{{ lh.date }}</b>
                     </div>
                 </div>
-                <v-card v-bind:key="h.id" elevation="0">
+                <v-card v-bind:key="lh.id" elevation="0">
                     <div class="washingStatus">
-                        <v-img id="washingImg" :src="h.washingImg" cover></v-img>
+                        <v-img id="washingImg" :src="lh.washingImg" cover></v-img>
                         <v-card-text>
                             <div id="name">
-                                품&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;|&nbsp;&nbsp;{{ h.name }}
+                                품&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;|&nbsp;&nbsp;{{ lh.name }}
                             </div>
-                            <div id="cost">세탁비용&nbsp;|&nbsp;&nbsp;{{ h.cost }}</div>
-                            <div id="requirement">요청사항&nbsp;|&nbsp;&nbsp;{{ h.requirement }}</div>
-                            <v-divider id="divisionLine2"></v-divider>
-                            <a id="laundryName">{{ h.laundryName }}</a>&nbsp;
-                            <v-btn id="reviewBtn" to="addreview">리뷰</v-btn>
+                            <div id="cost">세탁비용&nbsp;|&nbsp;&nbsp;{{ lh.cost }}</div>
+                            <div id="requirement">요청사항&nbsp;|&nbsp;&nbsp;{{ lh.requirement }}</div>
                         </v-card-text>
                     </div>
                 </v-card>
@@ -58,7 +55,7 @@
 }
 
 .washingStatus {
-    height: 141px;
+    height: 110px;
     border-radius: 13px;
     font-size: smaller;
     background-color: white;
@@ -73,6 +70,7 @@
 
 #name {
     margin-bottom: 3px;
+    margin-top: 5px;
 }
 #cost {
     margin-bottom: 3px;
@@ -100,10 +98,10 @@
 
 #washingImg {
     width: 85px;
-    height: 100px;
+    height: 80px;
     float: left;
     margin-left: 15px;
-    margin-top: 19px;
+    margin-top: 15px;
     margin-right: 17px;
     border-radius: 5px;
 }
@@ -115,12 +113,12 @@ import axios from "axios";
 export default {
     data: () => ({
         show: false,
-        historys: []
+        laundryhistorys: []
     }),
     async created() {
         try {
-            const res = await axios.get('http://localhost:3002/historys');
-            this.historys = res.data;
+            const res = await axios.get('http://localhost:3011/laundryhistorys');
+            this.laundryhistorys = res.data;
         } catch (e) {
             console.error(e);
         }
