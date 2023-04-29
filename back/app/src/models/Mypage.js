@@ -13,31 +13,23 @@ class MyPage {
       async showFavoriteList() {
         const id = this.body;
         const List = await MyPage.showList(id);
-        console.log(List);
-        //detail에는 db에서 가져온 세탁소의 id와 name이 포함.
-
-        if(List) {
-            //detail에는 db에서 가져온 세탁소의 id와 body로 담겨온 index 비교
-              return List;
-        }
+              
+        return List;
+        
     }
     static async showList(id) {
       return new Promise ((resolve, reject) => {
       db.query("USE CAPSTONE", (err, result) => {
           const query = "SELECT * FROM LIKES where U_ID = ?;";
           if (err) reject(err);
-          const keys = Object.keys(query);
+          //const keys = Object.keys(query);
           db.query(query, [id], (err, data) => {
               if (err) reject(err);
               else {
-                  const list = data;
-                 
-                  console.log(list);
-                  resolve({
-                    id: list[0].S_ID
-                      // 객체 배열화
-                  })
-                  }
+                // data는 배열 형태이다.
+                const product = data;
+                resolve(product)
+                }
               });
             })
       });

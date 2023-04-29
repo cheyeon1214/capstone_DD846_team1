@@ -13,6 +13,8 @@ router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
 router.get('/laundry', ctrl.output.laundry);
 router.get('/history', ctrl.output.history);
+
+router.get('/history/review/:S_ID/:O_NUM', ctrl.output.review);
 router.get('/myPage', ctrl.output.myPage);
 router.get('/upload', ctrl.output.upload);
 
@@ -23,5 +25,6 @@ router.use("/search", require("./search"));
 
 router.post("/cart", ctrl.process.addCart);
 router.post("/like", ctrl.process.like);
+router.post("/review", ctrl.process.review);
 
 module.exports = router; //웹으로 내보내기
