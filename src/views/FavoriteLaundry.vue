@@ -1,4 +1,4 @@
-<!--단골 세탁소-->
+<!-- 관심 세탁소 -->
 
 <template>
     <div id="laund-list">
