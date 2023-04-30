@@ -9,6 +9,11 @@ class Review {
         this.body = body;
         this.U_ID = U_ID;
       }
+      async showReview() {
+        const S_ID = this.body;
+        const show = await Review.show(S_ID);
+        return show;
+      }
       async update() {
         const S_ID = this.body.S_ID;
         const title = this.body.title;
@@ -39,7 +44,24 @@ class Review {
             })
       });
   }
-    
+  static async show(S_ID, U_ID) {
+    return new Promise ((resolve, reject) => {
+    db.query("USE CAPSTONE", (err, result) => {
+        const query = "SELECT * FROM REVIEW where S_ID = ?;";
+        if (err) reject(err);
+        //const keys = Object.keys(query);
+        db.query(query,  [S_ID], (err, data) => {
+            if (err) reject(err);
+            else {
+                const show = data;
+                resolve(
+                  show
+                )
+                }
+            });
+          })
+    });
+}
       
 }
 

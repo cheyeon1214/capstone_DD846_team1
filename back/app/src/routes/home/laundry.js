@@ -11,5 +11,5 @@ router.get("/", ctrl.output.laundry);
 router.get("/detail/:id", ctrl.output.laundryDetail);
 // 세탁신청 후 장바구니 페이지
 // router.get("/detail/:id/order", ctrl.output.laundryOrder);
-
+router.get("/:id/showReview", ctrl.output.showReview);
 module.exports = router; //웹으로 내보내기

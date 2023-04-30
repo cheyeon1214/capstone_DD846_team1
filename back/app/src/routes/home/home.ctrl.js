@@ -38,6 +38,19 @@ const output ={
         const O_NUM = req.params.O_NUM;
         res.render("home/review", {S_ID : S_ID, O_NUM : O_NUM});
     },
+    showReview : async (req, res) => {
+        logger.info(`GET /laundry 304 "showreview 화면으로 이동"`);
+        const S_ID = req.params.id; //세탁소아이디 불러옴
+        //console.log(req.params.id);
+        const review = new Review(S_ID, "codus");
+        const RV = await review.showReview();
+        console.log("RV:");
+        console.log(RV);
+        res.render("home/showReview",
+        {
+                RV
+        });
+    },
     history : async (req, res) => {
         logger.info(`GET /history 304 "이용내역 화면으로 이동"`);
         
