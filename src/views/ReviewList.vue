@@ -1,11 +1,6 @@
-<!--리뷰 목록-->
-
 <template>
     <div>
-      <br>
-      <h2 class="text-center">내가 쓴 리뷰</h2>
-      <hr id="div_line" />
-  
+    <br>
       <v-container fluid>
         <v-row>
           <v-col v-for="r in reviews" :key="r.id" cols="12" md="6" lg="4">
@@ -38,4 +33,4 @@
           }
       }
   }
-  </script>
+  </script>  
