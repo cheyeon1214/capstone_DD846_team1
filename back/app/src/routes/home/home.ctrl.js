@@ -47,7 +47,7 @@ const output ={
     reviewAdmin : async (req, res) => {
         logger.info(`GET /laundry 304 "showreview 화면으로 이동"`);
         const S_ID = "7";//세탁소아이디 불러옴
-        const review = new Review("7");
+        const review = new Review(req.body, "7"); //body는 비어있음 
         const RV = await review.showReview();
         console.log(RV);
         res.render("home/reviewAdmin", {RV});
@@ -103,6 +103,12 @@ const output ={
         logger.info(`GET /home/upload 304 "upload 화면으로 이동`);
         res.render('home/upload');
     },
+    deleteProduct : async(req, res) =>{
+        logger.info(`GET /home/upload 304 "Product 화면으로 이동`);
+        // console.log(req.params.id);
+        // PRODUCT_ID = req.params.id;
+        res.render('home/productAdmin', {PRODUCT_ID});
+    },
 };
 
 const process = {
@@ -116,7 +122,21 @@ const process = {
         console.log(req.body);
         const add = new Product(req.body, "7"); //세탁소아이디는 토큰으로 받아오기
         const response = await add.addProduct(); //상품추가메소드
-        return response;
+        res.render('home/laundry');
+    },
+    deleteProduct : async (req,res) => {
+        const deleteProduct = new Product(req.body, req.params.id);
+        const response = await deleteProduct.deleteProduct();
+        res.render('home/laundry');
+    },
+    addReviewReply : async (req,res) => {
+        console.log(req.body); //body에 O_NUM과 CEO_COMMENT가담김
+        const review = new Review(req.body, "7");
+        const response = review.reviewUpdate();
+        res.render('home/laundry');
+        // const review2 = new Review(req.body, "7"); //body는 비어있음 
+        // const RV = await review2.showReview();
+        // res.render('home/reviewAdmin', { RV: RV });
     },
 };
 

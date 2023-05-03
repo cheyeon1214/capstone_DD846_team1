@@ -15,10 +15,17 @@
             <td>PRODUCT_ID : <%= productAdmin[i].PRODUCT_ID %></td>
             <td>PRODUCT_NAME : <%= productAdmin[i].PRODUCT_NAME %></td>
             <td>PRODUCT_PRICE : <%= productAdmin[i].PRODUCT_PRICE %></td>
-            
+            <td>
+                <form action="/laundry/deleteProduct/<%=productAdmin[i].PRODUCT_ID%>" method="POST">
+                    <input type="hidden" name="productId" value="<%= productAdmin[i].PRODUCT_ID %>">
+                    <button type="submit">삭제</button>
+                </form>
+            </td>
         </tr>
         <br>
     <% } %>
     <a href="/laundry/productAdmin/<%= productAdmin[0].S_ID %>">상품추가</a>
+        
+    </form>
 </body>
 </html>

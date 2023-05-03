@@ -24,6 +24,13 @@ class Product {
         const update = await Product.update(S_ID, PRODUCT_NAME, PRODUCT_INFO, PRODUCT_PRICE);
         return update;
       }
+
+      async deleteProduct() {
+        const P_ID = this.S_ID;
+        const deleteProduct = await Product.delete(P_ID);
+        return deleteProduct;
+
+      }
     
   static async show(S_ID, U_ID) {
     return new Promise ((resolve, reject) => {
@@ -50,6 +57,25 @@ static async update(S_ID, PRODUCT_NAME, PRODUCT_INFO, PRODUCT_PRICE) {
         if (err) reject(err);
         //const keys = Object.keys(query);
         db.query(query, [parseInt(S_ID),PRODUCT_NAME, PRODUCT_INFO, parseInt(PRODUCT_PRICE)], (err, data) => {
+            if (err) reject(err);
+            else {
+                resolve({
+                  success: true
+                })
+                }
+            });
+          })
+    });
+
+      
+}
+static async delete(P_ID) {
+    return new Promise ((resolve, reject) => {
+    db.query("USE CAPSTONE", (err, result) => {
+        const query = "DELETE FROM product WHERE PRODUCT_ID = ?;";
+        if (err) reject(err);
+        //const keys = Object.keys(query);
+        db.query(query, [P_ID], (err, data) => {
             if (err) reject(err);
             else {
                 resolve({

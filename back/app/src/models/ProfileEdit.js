@@ -5,6 +5,7 @@ const crypto = require("crypto");
 
 class ProfileEdit {
     constructor(body, S_ID) {
+
         this.body = body;
         this.S_ID = S_ID;
       }
