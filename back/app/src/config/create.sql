@@ -99,8 +99,25 @@ CREATE TABLE ORDER_LIST
 );
 
 -- 테이블 Comment 설정 SQL - ORDER_LIST
-ALTER TABLE ORDER_LIST COMMENT '주문목록';       
-       
+ALTER TABLE ORDER_LIST COMMENT '주문목록'; 
+
+-- 테이블 생성 SQL - ORDER_LIST
+CREATE TABLE CEO
+(
+    `C_ID`        VARCHAR(45)     NOT NULL     AUTO_INCREMENT COMMENT '사장님ID', 
+    `C_PW`     VARCHAR(255)    NOT NULL    COMMENT '사장님 비밀번호', 
+    `S_ID`        INT            NOT NULL    	COMMENT '세탁소ID', //외래키
+    `C_NAME`      VARCHAR(45)    NULL        COMMENT '사장님이름', 
+    `C_PHONE`     VARCHAR(45)    NULL        COMMENT '사장님 전화번호', 
+    `C_IMAGE`     TEXT           NULL        COMMENT '사장님 이미지',   
+    `S_NUM`     TEXT           NOT NULL        COMMENT '사업자번호',
+    `SALT`     VARCHAR(255)    NULL        COMMENT 'salt', 
+    `S_MAIL`   VARCHAR(100)    NULL        COMMENT '사장님 이메일', 
+     PRIMARY KEY (C_ID)
+);       
+
+-- 테이블 Comment 설정 SQL - CEO
+ALTER TABLE CEO COMMENT '사장님'; 
        
 -- 테이블 생성 SQL - CART
 CREATE TABLE CART

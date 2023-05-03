@@ -7,17 +7,20 @@ const crypto = require("crypto");
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
-router.post("/api/users", (req, res) => {
+router.post("/api/CEO", (req, res) => {
   console.log("/members/new 호출됨", req.url, req.method);
 
   const paramId = req.body.id;
   const parammail = req.body.mail;
   const paramName = req.body.name;
   const paramPhone = req.body.phone;
+  const paramNum = req.body.num; //사업자번호 받기
+  const paramS_ID = req.body.S_ID; //세탁소ID 찾아서 받기
   const paramPsword = req.body.psword;
   const paramPswordCheck = req.body.confirmPsword;
+  
 
-  console.log("받은 데이터 : ", paramId,parammail,paramName,paramPhone,paramPsword, paramPswordCheck);
+  console.log("받은 데이터 : ", paramId,parammail,paramName,paramPhone,paramNum, paramS_ID,paramPsword, paramPswordCheck);
 
   //패스워드 암호화
   var salt = Math.round(new Date().valueOf() * Math.random()) + "";
@@ -44,8 +47,8 @@ router.post("/api/users", (req, res) => {
     // sql qeury문 삽입 -> ?에 순서대로 대괄호 안의 내용이 삽입됨
     // 디비 쿼리 고쳐야함
     const exec = conn.query(
-      "insert into USERS (U_ID, U_EMAIL, U_NAME, U_PHONE, U_PW, SALT) values (?, ?, ?, ?, ?, ?);",
-      [paramId, parammail, paramName,paramPhone, hashPsword, salt],
+      "insert into CEO (C_ID, S_MAIL, C_NAME, C_PHONE,S_NUM, S_ID, C_PW, SALT) values (?, ?, ?, ?, ?, ? , ?, ?);",
+      [paramId, parammail, paramName,paramPhone,paramNum, paramS_ID, hashPsword, salt],
       //sql query 실행 실패, 혹은 성공할 경우에 대한 코드
       (err, result) => {
         conn.release();
