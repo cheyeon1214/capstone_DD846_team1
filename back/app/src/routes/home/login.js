@@ -35,7 +35,7 @@ router.post("/", (req, res) => {
     console.log("DB 연결 성공");
 
     const exec = conn.query(
-      "select salt, C_PW from CEO where C_ID='" + id + "';",
+      "select S_ID, salt, C_PW from CEO where C_ID='" + id + "';",
       (err, data) => {
         console.log("실행된 SQL: " + exec.sql);
         // sql 오류
@@ -72,6 +72,7 @@ router.post("/", (req, res) => {
               var token = jwt.sign(
                 {
                   id: id, 
+                  s_id : data[0].S_ID
                 },
                 "secretKey", 
                 {
