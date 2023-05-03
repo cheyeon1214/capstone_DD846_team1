@@ -3,6 +3,7 @@
 const logger = require("../../config/logger");
 const Review = require("../../models/Review");
 const Product = require("../../models/Product");
+const ProfileEdit = require("../../models/ProfileEdit");
 
 const jwt = require('jsonwebtoken');
 const router = require(".");
@@ -67,7 +68,7 @@ const output ={
     //myPage 하위 기능
     profileEdit : (req, res) => {
         logger.info(`GET /myPage/profileEdit 304 "프로필편집 화면으로 이동"`);
-        //실제 경로 , 라우팅 경로 : myPage/profileEdit
+        
         res.render("home/profileEdit");
     },
 
@@ -107,9 +108,9 @@ const output ={
 const process = {
     edit : async (req,res) => {
         console.log(req.body);
-        const Edit = new MyPageEdit(req.body, "codus");
+        const Edit = new ProfileEdit(req.body, "7");
         const response = await Edit.update();
-        return response;
+        res.render('home/myPage');
     },
     addProduct : async (req,res) => {
         console.log(req.body);

@@ -11,4 +11,6 @@ router.get("/profileEdit", ctrl.output.profileEdit);
 //router.get("/laundryAdmin", ctrl.output.laundryAdmin);
 router.get("/reviewAdmin", ctrl.output.reviewAdmin);
 
+router.post("/edit", ctrl.process.edit);
+
 module.exports = router; //웹으로 내보내기

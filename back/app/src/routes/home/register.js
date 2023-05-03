@@ -7,8 +7,7 @@ const crypto = require("crypto");
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
-router.post("/api/CEO", (req, res) => {
-  console.log("/members/new 호출됨", req.url, req.method);
+router.post("/", (req, res) => {
 
   const paramId = req.body.id;
   const parammail = req.body.mail;
@@ -35,7 +34,7 @@ router.post("/api/CEO", (req, res) => {
         console.log("SQL 실행 시 오류 발생_아이디 중복 문제");
         console.dir(err);
         const json ={
-          code: 404,
+          code: 403,
           message: "사용중인 아이디입니다. 다른 아이디를 사용해주세요."
         }
         res.status(404).send(json);
