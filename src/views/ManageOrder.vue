@@ -30,7 +30,8 @@
                       <v-btn id="cancel" icon="mdi-close" variant="outlined" size="32px" style="border-radius: 15%;" @click="rejectRequest(index)"></v-btn>
                     </v-card-actions>
                     <v-card-actions style="margin-right: 17px;">
-                      <v-btn id="moreInfo" icon="mdi-plus" variant="outlined" size="32px" style="border-radius: 15%;" to="orderdetails"></v-btn>
+                      <v-btn id="moreInfo" icon="mdi-plus" variant="outlined" size="32px" style="border-radius: 15%;"
+                            v-bind:to="{ name: 'orderdetails', query: { id: request.id } }"></v-btn>
                     </v-card-actions>
                 </v-row>
             </v-card>
