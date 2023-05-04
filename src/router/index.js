@@ -16,6 +16,7 @@ import NoticeDetail1 from '../views/NoticeDetail1.vue'
 import NoticeDetail2 from '../views/NoticeDetail2.vue'
 
 import ManageOrder from '../views/ManageOrder.vue'
+import OrderDetails from '../views/OrderDetails.vue'
 
 
 const routes = [
@@ -96,6 +97,11 @@ const routes = [
     path: '/manageorder',
     name: 'manageorder',
     component: ManageOrder
+  },
+  {
+    path: '/orderdetails',
+    name: 'orderdetails',
+    component: OrderDetails
   },
 ]
 
