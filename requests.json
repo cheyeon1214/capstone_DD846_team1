@@ -5,21 +5,27 @@
             "date": "2023.03.21",
             "userId": "user12",
             "name": "코트",
-            "requirement": "드라이클리닝 해주세요"
+            "requirement": "드라이클리닝 해주세요",
+            "price": "10,000원",
+            "userAddr": "경기도 수원시 영통구 경기대학교"
         },
         {
             "id": 2,
             "date": "2023.03.21",
             "userId": "1us2er",
             "name": "니트",
-            "requirement": "없음"
+            "requirement": "없음",
+            "price": "8,000원",
+            "userAddr": "경기도 수원시 OO아파트"
         },
         {
             "id": 3,
             "date": "2023.03.20",
             "userId": "imuser",
             "name": "운동화",
-            "requirement": "얼룩 지워주세요"
+            "requirement": "얼룩 지워주세요",
+            "price": "7,000원",
+            "userAddr": "경기도 화성시 XX빌라"
         }
     ]
 }
