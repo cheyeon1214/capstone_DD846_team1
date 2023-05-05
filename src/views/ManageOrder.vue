@@ -37,6 +37,13 @@
             </v-card>
         </v-card>
         <v-divider class="mx-1 mb-1" style="margin-top: 30px;"></v-divider>
+
+        <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
+            <b>&nbsp;&nbsp;배송전</b>
+        </div>
+
+
+
     </div>
 </template>
 
