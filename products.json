@@ -1,0 +1,20 @@
+{
+  "managermypage": [
+      {
+          "id": 1,
+          "name": "상의",
+          "price": 5000,
+          "image": "https://picsum.photos/200/200?random=1"
+      },
+      {"id": 2,
+      "name": "하의",
+      "price": 10000,
+      "image": "https://picsum.photos/200/200?random=2"
+      }
+      {"id": 3,
+          "name": "신발",
+          "price": 5000,
+          "image": "https://picsum.photos/200/200?random=3"
+      }
+  ]
+}
