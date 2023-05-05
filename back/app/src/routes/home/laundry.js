@@ -16,5 +16,6 @@ router.get("/deleteProduct/:id", ctrl.output.deleteProduct);
 router.post("/addProduct", ctrl.process.addProduct);
 router.post("/deleteProduct/:id", ctrl.process.deleteProduct);
 router.post("/addReviewReply", ctrl.process.addReviewReply);
+router.post("/edit", ctrl.process.LaundryEdit);
 
 module.exports = router; //웹으로 내보내기

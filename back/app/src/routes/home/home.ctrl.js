@@ -3,7 +3,7 @@
 const logger = require("../../config/logger");
 const Review = require("../../models/Review");
 const Product = require("../../models/Product");
-const ProfileEdit = require("../../models/ProfileEdit");
+const Edit = require("../../models/Edit");
 
 const jwt = require('jsonwebtoken');
 const router = require(".");
@@ -112,10 +112,16 @@ const output ={
 };
 
 const process = {
-    edit : async (req,res) => {
+    ProfileEdit : async (req,res) => {
         console.log(req.body);
-        const Edit = new ProfileEdit(req.body, "7");
-        const response = await Edit.update();
+        const edit = new Edit(req.body, "7");
+        const response = await edit.profileUpdate();
+        res.render('home/myPage');
+    },
+    LaundryEdit : async (req,res) => {
+        console.log(req.body);
+        const edit = new Edit(req.body, "7");
+        const response = await edit.laundryUpdate();
         res.render('home/myPage');
     },
     addProduct : async (req,res) => {
