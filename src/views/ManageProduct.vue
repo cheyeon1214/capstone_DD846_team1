@@ -10,23 +10,24 @@
 
       <v-card-text style="margin-bottom: -5px;">
         <span id="productName" style="font-weight: bold; font-size: 15px;">
-          {{ product.name }}
+          {{ product.name }} &nbsp;
         </span>
         <span id="productPrice" style="color: gray">{{ product.price }} 원</span>
       </v-card-text>
 
       <v-row>
-        <v-col cols="9" style="margin-left: 6px; margin-right: -25px;">
+        <v-col cols="5" style="margin-left: 30px;">
           <v-text-field v-model="product.name" placeholder="상품 이름" variant="outlined"></v-text-field>
+        </v-col>
+        <v-col cols="5">
           <v-text-field v-model="product.price" placeholder="상품 가격" variant="outlined"></v-text-field>
         </v-col>
-
-        <v-col cols="2" style="display: flex; justify-content: space-between;">
-          <v-btn icon color="success" @click="updateProduct(index)"><v-icon>mdi-check</v-icon></v-btn>
-          <v-btn icon color="error" @click="deleteProduct(index)"><v-icon>mdi-delete</v-icon></v-btn>
-        </v-col>
-
-      </v-row>
+      </v-row>  
+      <v-card-actions style="margin-left: 250px; margin-top: -10px;">
+        <v-btn icon="mdi-check" @click="updateProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+        <v-btn icon="mdi-delete" @click="deleteProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+      </v-card-actions>
+      
 
       <v-divider class="mx-1 mb-1"></v-divider>
 
@@ -38,7 +39,6 @@
 
 <script>
 import AddProduct from './AddProduct.vue'
-
 export default {
   components: {
     'add-product': AddProduct
