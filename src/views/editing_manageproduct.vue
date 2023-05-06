@@ -1,85 +1,86 @@
 <!--수정중-->
 
-
-<!--주문관리-->
-
 <template>
-    <div class="manageorder">
-        <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
-            <b>&nbsp;&nbsp;세탁물 요청</b>
-        </div>
-        <!--<v-divider class="mx-1 mb-1" style="margin-top: 3%;"></v-divider>-->
-        <v-card class="mx-auto my-5" max-width="500" v-for="(request, index) in requests" v-bind:key="request.id" elevation="0">
-            <div v-if="index === 0 || request.date !== requests[index - 1].date" style="margin-bottom: 5px;">
-                <div id="date" style="margin-left: 10px; font-size: 14px;">
-                    <b>{{ request.date }}</b>
-                </div>
-            </div>
-            <v-card color="#5E5A80" style="color: white;">
-                <v-row style="margin-top: -19px; margin-bottom: -18px;">
-                    <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
-                        <b>{{ request.userId }}&nbsp;&nbsp;|</b>
-                    </v-card-text></v-col>
-                    <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
-                        <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
-                    </v-card-text></v-col>
-                    <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -190px;">
-                        &nbsp;<p>{{ request.requirement }}</p>
-                    </v-card-text></v-col>
-                    <v-card-actions style="margin-right: -10px;">
-                      <v-btn id="accept" icon="mdi-check" variant="outlined" size="32px" style="border-radius: 15%;"></v-btn>
-                    </v-card-actions>
-                    <v-card-actions style="margin-right: -10px;">
-                      <v-btn id="cancel" icon="mdi-close" variant="outlined" size="32px" style="border-radius: 15%;" @click="rejectRequest(index)"></v-btn>
-                    </v-card-actions>
-                    <v-card-actions style="margin-right: 17px;">
-                      <v-btn id="moreInfo" icon="mdi-plus" variant="outlined" size="32px" style="border-radius: 15%;"
-                            v-bind:to="{ name: 'orderdetails', query: { id: request.id } }"></v-btn>
-                    </v-card-actions>
-                </v-row>
-            </v-card>
-        </v-card>
-        <v-divider class="mx-1 mb-1" style="margin-top: 30px;"></v-divider>
+  <v-card class="mx-auto my-5" max-width="400" title="상품 관리" elevation="0">
+    <br />
+    <v-divider></v-divider>
 
-        <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
-            <b>&nbsp;&nbsp;배송전</b>
-        </div>
+    <v-card v-for="(product, index) in products" :key="index" elevation="0" style="margin-bottom: 10px;">
+      <v-img class="align-end text-white" id="productImg" height="150" :src="product.image" cover></v-img>
 
+      <v-card-text style="margin-bottom: -5px;">
+        <span id="productName" style="font-weight: bold; font-size: 15px;">
+          {{ product.name }} &nbsp;
+        </span>
+        <span id="productPrice" style="color: gray">{{ product.price }} 원</span>
+      </v-card-text>
 
+      <v-row>
+        <v-col cols="5" style="margin-left: 30px;">
+          <v-text-field v-model="product.name" placeholder="상품 이름" variant="outlined"></v-text-field>
+        </v-col>
+        <v-col cols="5">
+          <v-text-field v-model="product.price" placeholder="상품 가격" variant="outlined"></v-text-field>
+        </v-col>
+      </v-row>  
+      <v-card-actions style="margin-left: 250px; margin-top: -10px;">
+        <v-btn icon="mdi-check" @click="updateProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+        <v-btn icon="mdi-delete" @click="deleteProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+      </v-card-actions>
+      
 
-    </div>
+      <v-divider class="mx-1 mb-1"></v-divider>
+
+    </v-card>
+    <add-product @product-added="addProduct"></add-product>
+
+  </v-card>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
+import AddProduct from './AddProduct.vue'
 
 export default {
-    data: () => ({
-        show: false,
-        requests: []
-    }),
-    async created() {
-        try {
-            const res = await axios.get('http://localhost:3012/requests');
-            this.requests = res.data;
-        } catch (e) {
-            console.error(e);
-        }
+  components: {
+    'add-product': AddProduct
+  },
+  data() {
+    return {
+      products: [],
+    }
+  },
+  mounted() {
+    axios.get('/products.json')
+      .then(response => {
+        this.products = response.data.products
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  },
+  methods: {
+    updateProduct(index, product) {
+      this.products[index] = product
+      axios.put('/products.json', { products: this.products })
+        .catch(error => {
+          console.log(error)
+        })
     },
-    methods: {
-        async rejectRequest(index) {
-            try {
-                const requestId = this.requests[index].id;
-                await axios.delete(`http://localhost:3012/requests/${requestId}`);
-                this.requests.splice(index, 1);
-                this.showAlert("세탁 요청이 거절되었습니다.");
-            } catch (e) {
-                console.error(e);
-            }
-        },
-        showAlert(message) {
-            alert(message);
-        },
+    deleteProduct(index) {
+      this.products.splice(index, 1)
+      axios.put('/products.json', { products: this.products })
+        .catch(error => {
+          console.log(error)
+        })
     },
+    addProduct(product) {
+      this.products.push(product)
+      axios.put('/products.json', { products: this.products })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  }
 }
 </script>
