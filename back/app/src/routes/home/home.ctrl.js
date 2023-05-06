@@ -52,9 +52,10 @@ const output ={
         console.log(RV);
         res.render("home/reviewAdmin", {RV});
     },
-    history : async (req, res) => {
-        logger.info(`GET /history 304 "주문내역 화면으로 이동"`);
-        res.render("home/history");
+    orderManage : async (req, res) => {
+        logger.info(`GET /orderManage 304 "주문내역 화면으로 이동"`);
+        // const S_ID = "1";//세탁소아이디 불러옴
+        res.render("home/orderManage",{S_ID});
     },
     addProduct : async (req, res) => {
         logger.info(`GET /history 304 "상품추가 화면으로 이동"`);

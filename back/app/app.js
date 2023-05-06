@@ -44,4 +44,7 @@ app.use("/logout",logoutRouter);
 const uploadRouter = require("./src/routes/home/upload");
 app.use("/upload",uploadRouter);
 
+const orderManageRouter = require("./src/routes/home/orderManage");
+app.use("/orderManage",orderManageRouter);
+
 module.exports = app;

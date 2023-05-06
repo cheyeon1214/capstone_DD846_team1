@@ -53,7 +53,7 @@ class Edit {
   static async laundry(S_ID,phone,address,open,close,info,announce,update) {
     return new Promise ((resolve, reject) => {
     db.query("USE CAPSTONE", (err, result) => {
-        const query = "UPDATE STORE SET S_PHONE = ?, S_ADDRESS=?, S_OPENING =?, S_CLOSING = ?, S_COMMENT =?, S_ANNOUNCE =? WHERE S_ID = ?;";
+        const query = "UPDATE STORE SET S_PHONE = ?, S_ADDR1=?, S_OPENING =?, S_CLOSING = ?, S_COMMENT =?, S_ANNOUNCE =? WHERE S_ID = ?;";
         if (err) reject(err);
         //const keys = Object.keys(query);
         db.query(query,  [phone,address,open,close,info,announce,S_ID], (err, data) => {
