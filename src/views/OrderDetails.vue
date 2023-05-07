@@ -73,15 +73,12 @@ export default {
             try {
                 const requestId = this.request.id;
                 await axios.delete(`http://localhost:3012/requests/${requestId}`);
-                this.requests.splice(index, 1);
                 this.showAlert("세탁 요청이 거절되었습니다.");
-                this.$router.push("/manageorder"); // 관리 페이지로 이동
-                this.$nextTick(() => {
-          this.showAlert("알림이 출력되었습니다.");
-        });
+                this.requests.splice(index, 1);
             } catch (e) {
                 console.error(e);
             }
+            this.$router.push("/manageorder"); // 관리 페이지로 이동
         },
         showAlert(message) {
             alert(message);
