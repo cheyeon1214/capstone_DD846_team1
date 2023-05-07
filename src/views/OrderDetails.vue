@@ -35,7 +35,7 @@
                     </v-col>
                     <v-col>
                         <v-card-actions style="margin-left: 120px;">
-                          <v-btn id="accept" variant="outlined" style="border-radius: 10px;">수락</v-btn>
+                          <v-btn id="accept" variant="outlined" style="border-radius: 10px;" @click="clickAccept(index)">수락</v-btn>
                         </v-card-actions>
                     </v-col>
                     <v-col>
@@ -55,7 +55,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      request: {}
+      request: {},
+      beforeShipping: [],
     }
   },
   created() {
@@ -80,6 +81,25 @@ export default {
             }
             this.$router.push("/manageorder"); // 관리 페이지로 이동
         },
+        
+        // 수락 버튼 -> 배송전으로 이동
+        async clickAccept(index) {
+            try {
+                const requestId = this.request.id;
+                const request = this.request;
+                request.status = "배송전";    // JSON 데이터의 "status" 값을 "배송전"으로 수정
+                await axios.put(`http://localhost:3012/requests/${requestId}`, request);
+                this.showAlert("세탁 요청이 수락되었습니다.");
+                this.$router.push("/manageorder"); // 관리 페이지로 이동
+
+
+
+            } catch (e) {
+                console.error(e);
+            }
+        },
+
+
         showAlert(message) {
             alert(message);
         },

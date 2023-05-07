@@ -24,7 +24,7 @@
                         &nbsp;<p>{{ request.requirement }}</p>
                     </v-card-text></v-col>
                     <v-card-actions style="margin-right: -10px;">
-                      <v-btn id="accept" icon="mdi-check" variant="outlined" size="32px" style="border-radius: 15%;" @click="moveToBefore(index)"></v-btn>
+                      <v-btn id="accept" icon="mdi-check" variant="outlined" size="32px" style="border-radius: 15%;" @click="clickAccept(index)"></v-btn>
                     </v-card-actions>
                     <v-card-actions style="margin-right: -10px;">
                       <v-btn id="cancel" icon="mdi-close" variant="outlined" size="32px" style="border-radius: 15%;" @click="rejectRequest(index)"></v-btn>
@@ -39,7 +39,7 @@
         <v-divider class="mx-1 mb-1" style="margin-top: 30px;"></v-divider>
 
         <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
-            <div id="status" style="margin-bottom: 10px;"><b>&nbsp;&nbsp;배송전</b></div>
+            <div id="beforeShipping" style="margin-bottom: 10px;"><b>&nbsp;&nbsp;배송전</b></div>
             <v-card v-for="(request, index) in beforeShipping" :key="request.id" elevation="0">
                 <v-card color="#5E5A80" style="color: white; margin-bottom: 10px;">
                     <v-row style="margin-top: -19px; margin-bottom: -18px;">
@@ -59,7 +59,6 @@
                 </v-card>
             </v-card>
         </div>
-
     </div>
 </template>
 
@@ -92,19 +91,25 @@ export default {
             }
         },
         // 수락 버튼 -> 배송전으로 이동
-        moveToBefore(index) {
-            const beforeShipping = this.requests.splice(index, 1)[0];
-            this.beforeShipping.unshift(beforeShipping);
-            this.showAlert("세탁 요청이 수락되었습니다.");
-
-            this.beforeShipping[index].status = '배송전';
-            const request = this.beforeShipping.splice(index, 1)[0];
-            this.shipping.push(request);
+        async clickAccept(index) {
+            try {
+                const requestId = this.requests[index].id;
+                const request = this.requests[index];
+                request.status = "배송전";    // JSON 데이터의 "status" 값을 "배송전"으로 수정
+                await axios.put(`http://localhost:3012/requests/${requestId}`, request);
+                this.showAlert("세탁 요청이 수락되었습니다.");
+                // 해당 카드를 beforeShipping 배열로 이동
+                const acceptedRequest = this.requests.splice(index, 1)[0];
+                this.beforeShipping.push(acceptedRequest);
+            } catch (e) {
+                console.error(e);
+            }
         },
         //배송시작 버튼 -> 배송중으로 이동
         moveToIng(index) {
 
         },
+
         showAlert(message) {
             alert(message);
         },
