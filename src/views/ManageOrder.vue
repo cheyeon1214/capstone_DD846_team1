@@ -85,8 +85,8 @@ export default {
             try {
                 const requestId = this.requests[index].id;
                 await axios.delete(`http://localhost:3012/requests/${requestId}`);
-                this.requests.splice(index, 1);
                 this.showAlert("세탁 요청이 거절되었습니다.");
+                this.requests.splice(index, 1);
             } catch (e) {
                 console.error(e);
             }
