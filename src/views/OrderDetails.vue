@@ -55,7 +55,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      request: {},
+      request: [],
       beforeShipping: [],
     }
   },
@@ -83,7 +83,7 @@ export default {
         },
         
         // 수락 버튼 -> 배송전으로 이동
-        async clickAccept(index) {
+        async clickAccept() {
             try {
                 const requestId = this.request.id;
                 const request = this.request;
@@ -91,9 +91,6 @@ export default {
                 await axios.put(`http://localhost:3012/requests/${requestId}`, request);
                 this.showAlert("세탁 요청이 수락되었습니다.");
                 this.$router.push("/manageorder"); // 관리 페이지로 이동
-
-
-
             } catch (e) {
                 console.error(e);
             }
