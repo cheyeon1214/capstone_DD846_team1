@@ -95,8 +95,6 @@ export default {
                 console.error(e);
             }
         },
-
-
         showAlert(message) {
             alert(message);
         },
