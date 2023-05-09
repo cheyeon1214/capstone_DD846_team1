@@ -10,9 +10,8 @@
     "reviews": "json-server --watch reviews.json --port 3006",
     "managermypage": "json-server --watch managermypage.json --port 3008",
     "mylaundrys": "json-server --watch mylaundrys.json --port 3009",
-    "laundryhistorys": "json-server --watch laundryhistorys.json --port 3011",
     "requests": "json-server --watch requests.json --port 3012",
-    "dev": "concurrently \"npm run managelaundrys\" \"npm run reviews\" \"npm run managermypage\" \"npm run mylaundrys\" \"npm run laundryhistorys\" \"npm run requests\" "
+    "dev": "concurrently \"npm run managelaundrys\" \"npm run reviews\" \"npm run managermypage\" \"npm run mylaundrys\" \"npm run requests\" "
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
