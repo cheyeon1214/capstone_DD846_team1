@@ -1,4 +1,5 @@
 <!--주문관리-->
+<!--서혜린---->
 
 <template>
     <div class="manageorder">
@@ -26,7 +27,7 @@
                       <v-btn id="accept" icon="mdi-check" variant="outlined" size="32px" style="border-radius: 15%;" @click="clickAccept(request.id)"></v-btn>
                     </v-card-actions>
                     <v-card-actions style="margin-right: -10px;">
-                      <v-btn id="cancel" icon="mdi-close" variant="outlined" size="32px" style="border-radius: 15%;" @click="rejectRequest(index)"></v-btn>
+                      <v-btn id="cancel" icon="mdi-close" variant="outlined" size="32px" style="border-radius: 15%;" @click="rejectRequest(request.id)"></v-btn>
                     </v-card-actions>
                     <v-card-actions style="margin-right: 17px;">
                       <v-btn id="moreInfo" icon="mdi-plus" variant="outlined" size="32px" style="border-radius: 15%;"
@@ -39,7 +40,7 @@
 
         <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
             <div id="beforeDelivery" style="margin-bottom: 10px;"><b>&nbsp;&nbsp;배송전</b></div>
-            <v-card v-for="(request, index) in filteredRequests('배송전')" :key="request.id" elevation="0">
+            <v-card v-for="request in filteredRequests('배송전')" :key="request.id" elevation="0">
                 <v-card color="#5E5A80" style="color: white; margin-bottom: 10px;">
                     <v-row style="margin-top: -19px; margin-bottom: -18px;">
                         <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
@@ -48,7 +49,7 @@
                         <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
                             <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                         </v-card-text></v-col>
-                        <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -190px;">
+                        <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -205px;">
                             &nbsp;<p>{{ request.requirement }}</p>
                         </v-card-text></v-col>
                         <v-card-actions style="margin-right: 20px;">
@@ -61,7 +62,7 @@
 
         <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
             <div id="onDelivery" style="margin-bottom: 10px;"><b>&nbsp;&nbsp;배송중</b></div>
-            <v-card v-for="(request, index) in filteredRequests('배송중')" :key="request.id" elevation="0">
+            <v-card v-for="request in filteredRequests('배송중')" :key="request.id" elevation="0">
                 <v-card color="#5E5A80" style="color: white; margin-bottom: 10px;">
                     <v-row style="margin-top: -19px; margin-bottom: -18px;">
                         <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
@@ -70,7 +71,7 @@
                         <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
                             <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                         </v-card-text></v-col>
-                        <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -190px;">
+                        <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -205px;">
                             &nbsp;<p>{{ request.requirement }}</p>
                         </v-card-text></v-col>
                         <v-card-actions style="margin-right: 20px;">
@@ -83,7 +84,7 @@
 
         <div class="mx-auto my-5" style="margin-top: 15px; max-width: 500px;">
             <div id="completeDelivery" style="margin-bottom: 10px;"><b>&nbsp;&nbsp;배송완료</b></div>
-            <v-card v-for="(request, index) in filteredRequests('배송완료')" :key="request.id" elevation="0">
+            <v-card v-for="request in filteredRequests('배송완료')" :key="request.id" elevation="0">
                 <v-card color="#5E5A80" style="color: white; margin-bottom: 10px;">
                     <v-row style="margin-top: -19px; margin-bottom: -18px;">
                         <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
@@ -92,10 +93,11 @@
                         <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
                             <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                         </v-card-text></v-col>
-                        <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -190px;">
+                        <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -210px;">
                             &nbsp;<p>{{ request.requirement }}</p>
                         </v-card-text></v-col>
                         <v-card-actions style="margin-right: 20px;">
+                            <v-btn id="delete" variant="outlined" style="border-radius: 20px; font-size: 12px;" @click="clickDelete(request.id)">삭제</v-btn>
                         </v-card-actions>
                     </v-row>
                 </v-card>
@@ -122,12 +124,11 @@ export default {
         }
     },
     methods: {
-        async rejectRequest(index) {
+        async rejectRequest(requestId) {
             try {
-                const requestId = this.requests[index].id;
                 await axios.delete(`http://localhost:3012/requests/${requestId}`);
+                window.location.reload(); // 페이지 새로고침 (= this.$router.go();)
                 this.showAlert("세탁 요청이 거절되었습니다.");
-                this.requests.splice(index, 1);
             } catch (e) {
                 console.error(e);
             }
@@ -142,7 +143,7 @@ export default {
                 const request = response.data;
                 request.status = "배송전";  // JSON 데이터의 "status" 값을 "배송전"으로 수정
                 await axios.put(`http://localhost:3012/requests/${requestId}`, request);
-                window.location.reload(); // 페이지 새로고침 (= this.$router.go();)   
+                window.location.reload(); 
                 this.showAlert("세탁 요청이 수락되었습니다.");
             } catch (e) {
                 console.error(e);
@@ -170,6 +171,16 @@ export default {
                 await axios.put(`http://localhost:3012/requests/${requestId}`, request);
                 window.location.reload(); 
                 this.showAlert("배송이 완료되었습니다.");
+            } catch (e) {
+                console.error(e);
+            }
+        },
+        // 삭제 버튼 -> 해당 기록 삭제
+        async clickDelete(requestId) {
+            try {
+                await axios.delete(`http://localhost:3012/requests/${requestId}`);
+                window.location.reload();
+                this.showAlert("완료 항목이 삭제되었습니다.");
             } catch (e) {
                 console.error(e);
             }
