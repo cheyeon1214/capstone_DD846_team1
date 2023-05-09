@@ -1,4 +1,5 @@
-<!--리뷰 체크-->
+<!--리뷰 확인-->
+<!--서혜린-->
 
 <template>
     <v-card class="mx-auto my-5" max-width="400" elevation="0">
