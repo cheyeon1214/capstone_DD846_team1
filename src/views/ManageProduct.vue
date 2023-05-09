@@ -1,4 +1,5 @@
-<!-- 상품 관리 -->
+<!--상품 관리-->
+<!--이시언-->
 
 <template>
   <v-card class="mx-auto my-5" max-width="400" title="상품 관리" elevation="0">
