@@ -32,7 +32,6 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
-
             <v-btn color="#0C70FE" @click="addManageLaundrys">
                 등록
                 <v-icon icon="mdi-chevron-right" color="#0C70FE" end></v-icon>
@@ -43,7 +42,6 @@
 
 <script>
 import axios from 'axios';
-const baseURL = "http://localhost:3005/managelaundrys"; //node.js의 해당 api 필요
 
 export default {
     data() {
@@ -79,26 +77,41 @@ export default {
                             '오픈시간:', this.openTime,
                             '마감시간:', this.closeTime,
                             '공지사항:', this.notice
-                            ); //프론트엔드에서 통신 테스트용
+                            ); //테스트
 
                 try {
-                    const res = await axios.post(baseURL, {
-                        name: this.name,
+                    
+                    const newData = {
+                        laundryName: this.name,
                         intro: this.intro,
                         openTime: this.openTime,
                         closeTime: this.closeTime,
                         notice: this.notice,
-                        image: this.image
-                    });
+                        image: this.image,
+                    };
 
-                    this.managelaundrys = [...this.managelaundrys, res.data];
+                    // JSON 파일의 내용을 가져옵니다.
+                    const response = await axios.get('http://localhost:3005/managelaundrys');
+                    let jsonData = response.data;
+
+                    // managelaundrys 배열이 undefined인 경우 초기화합니다.
+                    if (!jsonData.managelaundrys) {
+                        jsonData.managelaundrys = [];
+                    }
+
+                    // 새로운 데이터를 기존 데이터에 추가합니다.
+                    jsonData.managelaundrys.push(newData);
+
+                    // 변경된 데이터를 JSON 파일에 업데이트합니다.
+                    await axios.put('http://localhost:3005/managelaundrys', jsonData);
+
+                    console.log('데이터가 추가되었습니다.');
+
                 } catch (e) {
                     console.error(e);
                 }
             }
-            
         },
     },
-    
 };
 </script>
