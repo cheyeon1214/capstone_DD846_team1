@@ -5,21 +5,23 @@
     <div class="wrapper">
         <v-card class="mx-auto my-5" max-width="500" elevation="0">
             <div style="margin-top: -7%;"></div>
-            <div v-for="(lh, index) in laundryhistorys" v-bind:key="lh.id">
-                <div v-if="index === 0 || lh.date !== laundryhistorys[index - 1].date">
-                    <div class="date" id="date">
-                        <b>{{ lh.date }}</b>
+            <div v-for="(request, index) in filteredRequests('배송완료')" v-bind:key="request.id" elevation="0" query="request.id">
+                <div v-if="index === 0 || request.date !== requests[index - 1].date">
+                    <div class="date" id="date" style="margin-top: 40px; margin-left: 4%; font-size: 15px;">
+                        <b>{{ request.date }}</b>
                     </div>
                 </div>
-                <v-card v-bind:key="lh.id" elevation="0">
-                    <div class="washingStatus">
-                        <v-img id="washingImg" :src="lh.washingImg" cover></v-img>
+                <v-card v-bind:key="request.id" elevation="0">
+                    <div class="washingHistory">
+                        <v-img id="washingImg" src="https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" cover></v-img>
                         <v-card-text>
-                            <div id="name">
-                                품&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;&nbsp;|&nbsp;&nbsp;{{ lh.name }}
+                            <div id="name" style="margin-bottom: 3px; margin-top: 5px;">
+                                <a style="color: darkgray;">품목</a>&nbsp;&nbsp;&nbsp;&nbsp;{{ request.name }}
                             </div>
-                            <div id="cost">세탁비용&nbsp;|&nbsp;&nbsp;{{ lh.cost }}</div>
-                            <div id="requirement">요청사항&nbsp;|&nbsp;&nbsp;{{ lh.requirement }}</div>
+                            <div id="price" style="margin-bottom: 3px;">
+                                <a style="color: darkgray;">비용</a>&nbsp;&nbsp;&nbsp;&nbsp;{{ request.price }}</div>
+                            <div id="requirement" style="margin-bottom: 3px;">
+                                <a style="color: darkgray;">요청</a>&nbsp;&nbsp;&nbsp;&nbsp;{{ request.requirement }}</div>
                         </v-card-text>
                     </div>
                 </v-card>
@@ -30,32 +32,7 @@
 </template>
 
 <style>
-.myWashing {
-    margin-top: 20px;
-    font-size: 18px;
-    text-align: center;
-}
-
-#divisionLine {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-#divisionLine2 { 
-    width: 70%;
-    margin-left: 95px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.date {
-    margin-top: 40px;
-    margin-left: 4%;
-    font-size: 15px;
-}
-
-.washingStatus {
+.washingHistory {
     height: 110px;
     border-radius: 13px;
     font-size: smaller;
@@ -68,35 +45,6 @@
     text-overflow: ellipsis;
     overflow: auto;
 }
-
-#name {
-    margin-bottom: 3px;
-    margin-top: 5px;
-}
-#cost {
-    margin-bottom: 3px;
-}
-#requirement {
-    margin-bottom: 3px;
-}
-#laundryName {
-    margin-left: 4px;
-}
-#reviewBtn {
-    width: 10px;
-    height: 24px;
-    background-color: #5E5A80;
-    color: white;
-    border-radius: 10px;
-    margin-top: 1px;
-    box-shadow: none;
-}
-
-.delivery {
-    color: red;
-    text-decoration-line: none;
-}
-
 #washingImg {
     width: 85px;
     height: 80px;
@@ -114,15 +62,20 @@ import axios from "axios";
 export default {
     data: () => ({
         show: false,
-        laundryhistorys: []
+        requests: [],
     }),
     async created() {
         try {
-            const res = await axios.get('http://localhost:3011/laundryhistorys');
-            this.laundryhistorys = res.data;
+            const res = await axios.get('http://localhost:3012/requests');
+            this.requests = res.data;
         } catch (e) {
             console.error(e);
         }
+    },
+    methods: {
+        filteredRequests(status) {  //배송 상태별로 구분
+            return this.requests.filter(request => request.status === status);
+        },
     }
 }
 </script>
