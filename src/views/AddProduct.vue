@@ -1,3 +1,6 @@
+<!--상품관리-->
+<!--이시언-->
+
 <template>
     <v-card>
       <v-card-title>상품 추가</v-card-title>
