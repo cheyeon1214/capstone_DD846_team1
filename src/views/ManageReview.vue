@@ -61,7 +61,7 @@ async created() {
     console.error(e);
   }
 },
-methods: {
+methods: { 
   async sendReply(reviewId) {
     try {
       const response = await axios.get(`http://localhost:3006/reviews/${reviewId}`);
