@@ -9,7 +9,7 @@
       "price": "10,000원",
       "userAddr": "경기도 수원시 영통구 경기대학교",
       "status": "요청중"
-  },
+    },
     {
       "id": 2,
       "date": "2023.03.21",
@@ -29,6 +29,26 @@
       "price": "7,000원",
       "userAddr": "경기도 수원시 XX빌라",
       "status": "요청중"
+    },
+    {
+      "id": 4,
+      "date": "2023.03.19",
+      "userId": "usser",
+      "name": "종합세탁물",
+      "requirement": "없음",
+      "price": "7,000원",
+      "userAddr": "경기대학교 기숙사",
+      "status": "배송완료"
+    },
+    {
+      "id": 5,
+      "date": "2023.03.18",
+      "userId": "wlrkdy",
+      "name": "구두",
+      "requirement": "변색 복구해주세요",
+      "price": "8,000원",
+      "userAddr": "경기도 수원시 AA빌라",
+      "status": "배송완료"
     }
   ]
 }
