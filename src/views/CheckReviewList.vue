@@ -19,16 +19,16 @@
                 </v-rating>
                 <v-card-text id="reviewContent" style="margin-top: 8px;">{{ r.reviewContent }}</v-card-text>
             </v-row>
-            <!--<v-row style="margin-top: -25px;">
+            <v-row style="margin-top: -20px;">
               <v-col cols="1">
-                <v-card-text style="font-size: larger; margin-left: 20px;">⮡ </v-card-text>
+                <v-card-text style="font-size: larger; margin-left: 15px;">⮡ </v-card-text>
               </v-col>
-              <v-col cols="9" style="margin-left: 30px; margin-right: -25px; margin-top: 10px">
-                <v-card height="30px" style="box-shadow: none;" border>
-                    <v-card-text style="margin-top: -11px;">감사합니다.</v-card-text>
+              <v-col cols="10" style="margin-left: 20px; margin-right: -25px; margin-top: 10px;">
+                <v-card style="box-shadow: none; background-color: gainsboro;" >
+                    <v-card-text><a style="color: darkgrey;">답글</a>&nbsp;&nbsp;&nbsp;{{ r.replyValue }}</v-card-text>
                 </v-card>
               </v-col>
-            </v-row> -->
+            </v-row>
             <v-divider class="mx-1 mb-1" style="margin-top: 15px;"></v-divider>
         </v-card>
     </v-card>
@@ -41,7 +41,6 @@ export default {
   data: () => ({
     show: false,
     reviews: [],
-    reply: "", // 답글 입력을 위한 변수 추가
   }),
   async created() {
     try {
@@ -50,20 +49,6 @@ export default {
     } catch (e) {
       console.error(e);
     }
-  },
-  methods: {
-    async sendReply() {
-        console.log('전송할 답글 정보:', this.reply); //프론트엔드에서 통신 테스트용
-      try {
-        const response = await axios.post('http://localhost:3007/replies', { //node.js의 해당 api 필요
-        reply: this.reply
-      });
-      console.log(response.data); // POST 요청에 대한 응답
-      this.reply = ''; // 입력 필드 비우기    
-    } catch (e) {
-        console.error(e);
-      }
-    },
   },
 };
 </script>
