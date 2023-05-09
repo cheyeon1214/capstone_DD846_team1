@@ -1,4 +1,5 @@
 <!--요청된 세탁물 상세정보-->
+<!--서혜린-->
 
 <template>
     <div class="orderdetails">
@@ -35,7 +36,7 @@
                     </v-col>
                     <v-col>
                         <v-card-actions style="margin-left: 120px;">
-                          <v-btn id="accept" variant="outlined" style="border-radius: 10px;" @click="clickAccept(index)">수락</v-btn>
+                          <v-btn id="accept" variant="outlined" style="border-radius: 10px;" @click="clickAccept()">수락</v-btn>
                         </v-card-actions>
                     </v-col>
                     <v-col>
@@ -81,7 +82,7 @@ export default {
             }
             this.$router.push("/manageorder"); // 관리 페이지로 이동
         },
-        
+
         // 수락 버튼 -> 배송전으로 이동
         async clickAccept() {
             try {
