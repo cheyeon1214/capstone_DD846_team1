@@ -31,7 +31,7 @@
                 <v-row style="margin-bottom: 10px; margin-top: 5px;">
                     <v-col>
                         <v-card-actions>
-                          <v-btn id="moreInfo" to="manageorder" style="border-radius: 10px;">&lt; 이전</v-btn>
+                          <v-btn id="back" to="manageorder" style="border-radius: 10px;">&lt; 이전</v-btn>
                         </v-card-actions>
                     </v-col>
                     <v-col>
