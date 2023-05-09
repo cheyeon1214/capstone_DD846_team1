@@ -1,5 +1,5 @@
 <!--요청된 세탁물 상세정보-->
-<!--서혜린-->
+<!--서혜린--> 
 
 <template>
     <div class="orderdetails">
