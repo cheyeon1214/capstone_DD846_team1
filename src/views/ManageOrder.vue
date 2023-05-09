@@ -17,7 +17,7 @@
                     <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
                         <b>{{ request.userId }}&nbsp;&nbsp;|</b>
                     </v-card-text></v-col>
-                    <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
+                    <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px; margin-top: 4px;">
                         <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                     </v-card-text></v-col>
                     <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -190px;">
@@ -46,7 +46,7 @@
                         <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
                             <b>{{ request.userId }}&nbsp;&nbsp;|</b>
                         </v-card-text></v-col>
-                        <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
+                        <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px; margin-top: 4px;">
                             <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                         </v-card-text></v-col>
                         <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -205px;">
@@ -68,7 +68,7 @@
                         <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
                             <b>{{ request.userId }}&nbsp;&nbsp;|</b>
                         </v-card-text></v-col>
-                        <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
+                        <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px; margin-top: 4px;">
                             <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                         </v-card-text></v-col>
                         <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -205px;">
@@ -90,7 +90,7 @@
                         <v-col><v-card-text id="userId" style="margin-top: 4px; font-size: 14px;">
                             <b>{{ request.userId }}&nbsp;&nbsp;|</b>
                         </v-card-text></v-col>
-                        <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px;">
+                        <v-col><v-card-text id="name" style="font-size: 14px; margin-left: -60px; margin-top: 4px;">
                             <b>&nbsp;&nbsp;&nbsp;{{ request.name }}</b>
                         </v-card-text></v-col>
                         <v-col style="margin-top: 3px;"><v-card-text id="requirement" style="margin-top: 5px; margin-left: -210px;">
