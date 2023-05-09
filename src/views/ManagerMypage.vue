@@ -31,7 +31,7 @@
                             <v-card-subtitle>판매내역</v-card-subtitle>
                             <v-card-actions>
                               <v-btn class="text-h5" id="countHistory" style="margin-left: 2px;" color="white" to="managerhistory">
-                                {{ mmp.countHistory }}
+                                {{ historyCount }}
                               </v-btn>
                             </v-card-actions>
                         </v-col>
@@ -41,7 +41,7 @@
                             <v-card-subtitle>리뷰확인</v-card-subtitle>
                             <v-card-actions>
                               <v-btn class="text-h5" id="countReview" style="margin-left: 2px;" color="white" to="checkreviewlist">
-                                {{ mmp.countReview }}
+                                {{ reviewCount }}
                               </v-btn>
                             </v-card-actions>
                         </v-col>
@@ -121,7 +121,9 @@ import axios from "axios";
 export default {
     data: () => ({
         show: false,
-        managermypage: []
+        managermypage: [],
+        reviewCount: 0,
+        historyCount: 0,
     }),
     async created() {
         try {
@@ -130,6 +132,21 @@ export default {
         } catch (e) {
             console.error(e);
         }
+        //판매내역 수
+        axios.get(`http://localhost:3012/requests`)
+            .then(response => {
+                const historyData = response.data;
+                const filteredHistoryData = historyData.filter(item => item.status === '배송완료');
+                const historyNum = filteredHistoryData.length;
+                this.historyCount = historyNum;
+        })
+        //리뷰 수
+        axios.get(`http://localhost:3006/reviews`)
+            .then(response => {
+                const reviewData = response.data;
+                const reviewNum = reviewData.length;
+                this.reviewCount = reviewNum;
+        })
     }
 }
 </script>
