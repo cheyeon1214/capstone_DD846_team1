@@ -2,7 +2,7 @@
 <!--서혜린-->
 
 <template>
-    <v-card class="mx-auto my-5" max-width="400" title="세탁소 관리" elevation="0">
+    <v-card class="mx-auto my-5" max-width="400" elevation="0">
         <v-container>
             <v-text-field v-model="laundryName" :rules="[rules.required]" 
                 color="blue" label="세탁소명" placeholder="세탁소 이름을 입력해주세요" variant="underlined"></v-text-field><br>
@@ -23,6 +23,9 @@
                     color="blue" label="마감 시간" type="time" variant="solo"></v-text-field>
               </v-col>
             </v-row><br>
+
+            <v-text-field v-model="tel" :rules="[rules.phoneNumber]" 
+                color="blue" label="전화번호" placeholder="세탁소 전화번호를 작성해주세요" variant="underlined"></v-text-field><br>
 
             <v-text-field v-model="notice" :rules="[rules.required]" 
                 color="blue" label="공지사항" placeholder="공지사항을 작성해주세요" variant="underlined"></v-text-field><br>
@@ -53,6 +56,7 @@ export default {
             intro: null,
             openTime: null,
             closeTime: null,
+            tel: null,
             notice: null,
             image: null,
 
@@ -60,6 +64,7 @@ export default {
             rules: {
                 required: value => !!value || '반드시 입력하세요',
                 minRules: value => value.length >= 5 || '5자 이상 입력하세요',
+                phoneNumber: value => /^\d{3}-\d{3,4}-\d{4}$/.test(value) || '유효한 전화번호 형식으로 입력하세요.',
             },
         }
     },
@@ -71,6 +76,7 @@ export default {
             this.rules.minRules(this.intro) === true &&
             this.rules.required(this.openTime) === true && 
             this.rules.required(this.closeTime) === true &&
+            this.rules.phoneNumber(this.tel) === true &&
             this.rules.required(this.notice) === true &&
             this.rules.required(this.image) === true
             )
@@ -82,6 +88,7 @@ export default {
                     intro: this.intro,
                     openTime: this.openTime,
                     closeTime: this.closeTime,
+                    tel: this.tel,
                     notice: this.notice,
                 };
 
@@ -105,6 +112,7 @@ export default {
                     this.intro = null;
                     this.openTime = null;
                     this.closeTime = null;
+                    this.tel = null;
                     this.notice = null;
                     this.image = null;
 
