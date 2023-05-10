@@ -2,10 +2,13 @@
 <!--서혜린-->
 
 <template>
-    <v-card class="mx-auto my-5" max-width="400" title="세탁소 관리" elevation="0"><br>
+    <v-card class="mx-auto my-5" max-width="400" title="세탁소 관리" elevation="0">
         <v-container>
             <v-text-field v-model="laundryName" :rules="[rules.required]" 
                 color="blue" label="세탁소명" placeholder="세탁소 이름을 입력해주세요" variant="underlined"></v-text-field><br>
+
+            <v-text-field v-model="laundryAddr" :rules="[rules.required]" 
+                color="blue" label="주소" placeholder="세탁소 주소를 입력해주세요" variant="underlined"></v-text-field><br>    
 
             <v-text-field v-model="intro" :rules="[rules.minRules]" 
                 color="blue" label="소개글" placeholder="세탁소 소개글을 작성해주세요" variant="underlined"></v-text-field><br>
@@ -13,11 +16,11 @@
             <v-row>
               <v-col cols="6">
                 <v-text-field v-model="openTime" :rules="[rules.required]"
-                    color="blue" label="오픈 시간" type="time" variant="underlined"></v-text-field>
+                    color="blue" label="오픈 시간" type="time" variant="solo"></v-text-field>
               </v-col>
               <v-col cols="6">
                 <v-text-field v-model="closeTime" :rules="[rules.required]"
-                    color="blue" label="마감 시간" type="time" variant="underlined"></v-text-field>
+                    color="blue" label="마감 시간" type="time" variant="solo"></v-text-field>
               </v-col>
             </v-row><br>
 
@@ -46,6 +49,7 @@ export default {
     data() {
         return {
             laundryName: null,
+            laundryAddr: null,
             intro: null,
             openTime: null,
             closeTime: null,
@@ -63,6 +67,7 @@ export default {
         async addManageLaundrys() {
             if (
             this.rules.required(this.laundryName) === true && 
+            this.rules.required(this.laundryAddr) === true && 
             this.rules.minRules(this.intro) === true &&
             this.rules.required(this.openTime) === true && 
             this.rules.required(this.closeTime) === true &&
@@ -73,6 +78,7 @@ export default {
                 // 새로운 세탁소 데이터 객체
                 const newLaundry = {
                     laundryName: this.laundryName,
+                    laundryAddr: this.laundryAddr,
                     intro: this.intro,
                     openTime: this.openTime,
                     closeTime: this.closeTime,
@@ -95,6 +101,7 @@ export default {
 
                     // 입력 필드 초기화
                     this.laundryName = null;
+                    this.laundryAddr = null;
                     this.intro = null;
                     this.openTime = null;
                     this.closeTime = null;
