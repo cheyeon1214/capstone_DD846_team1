@@ -64,7 +64,6 @@ methods: {
       await axios.put(`http://localhost:3006/reviews/${reviewId}`, review);
       this.showAlert("답글이 등록되었습니다.");
       review.replyValue = '';   // 텍스트 필드 비우기
-      
     } catch (e) {
       console.error(e);
     }
