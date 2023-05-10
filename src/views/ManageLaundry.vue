@@ -84,7 +84,7 @@ export default {
                 formData.append('image', this.image);
 
                 try {
-                    // 이미지 업로드 요청 (백엔드 api 사용할것)
+                    // 이미지 업로드 요청
                     //const response = await axios.post('http://localhost:4000/upload', formData);
                     // 업로드된 이미지의 경로를 데이터 객체에 추가
                     //newLaundry.image = response.data.filePath;
