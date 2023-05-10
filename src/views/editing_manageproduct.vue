@@ -1,87 +1,68 @@
-<!--이시언_수정중-->
+<!--상품 관리-->
+<!--이시언-->
 
 <template>
-  <div>
-    <h2>상품 관리</h2>
-    <div>
-      <button @click="addProduct">상품 추가</button>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>이름</th>
-          <th>가격</th>
-          <th>이미지</th>
-          <th>작업</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="product in products" :key="product.id">
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
-          <td>
-            <img :src="product.image" alt="상품 이미지" height="50" />
-          </td>
-          <td>
-            <button @click="editProduct(product)">수정</button>
-            <button @click="deleteProduct(product)">삭제</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <v-card class="mx-auto my-5" max-width="400" title="상품 관리" elevation="0">
+    <br />
+    <v-divider></v-divider>
+
+    <v-card v-for="(product, index) in products" :key="index" elevation="0" style="margin-bottom: 10px;">
+      <v-img class="align-end text-white" id="productImg" height="150" :src="product.image" cover></v-img>
+
+      <v-card-text style="margin-bottom: -5px;">
+        <span id="productName" style="font-weight: bold; font-size: 15px;">
+          {{ product.name }} &nbsp;
+        </span>
+        <span id="productPrice" style="color: gray">{{ product.price }} 원</span>
+      </v-card-text>
+
+      <v-row>
+        <v-col cols="5" style="margin-left: 30px;">
+          <v-text-field v-model="product.name" placeholder="상품 이름" variant="outlined"></v-text-field>
+        </v-col>
+        <v-col cols="5">
+          <v-text-field v-model="product.price" placeholder="상품 가격" variant="outlined"></v-text-field>
+        </v-col>
+      </v-row>  
+      <v-card-actions style="margin-left: 250px; margin-top: -10px;">
+        <v-btn icon="mdi-check" @click="updateProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+        <v-btn icon="mdi-delete" @click="deleteProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+      </v-card-actions>
+      
+
+      <v-divider class="mx-1 mb-1"></v-divider>
+
+    </v-card>
+    <add-product @product-added="addProduct"></add-product>
+
+  </v-card>
 </template>
 
 <script>
-import axios from "axios";
-
+import AddProduct from './AddProduct.vue'
 export default {
-  name: "ManageProduct",
+  components: {
+    'add-product': AddProduct
+  },
   data() {
     return {
-      products: [],
-    };
-  },
-  mounted() {
-    this.fetchProducts();
+      products: [
+        {id: 1, name: '상의', price: 5000, image: 'https://picsum.photos/200/200?random=1'},
+        {id: 2, name: '하의', price: 10000, image: 'https://picsum.photos/200/200?random=2'},
+        {id: 3, name: '신발', price: 10000, image: 'https://picsum.photos/200/200?random=3'}
+      ],
+    }
   },
   methods: {
-    fetchProducts() {
-      axios
-        .get("products.json")
-        .then((response) => {
-          this.products = response.data.products;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    updateProduct(index) {
+      this.products[index] = this.editedProduct
     },
-    addProduct() {
-      this.$router.push("/add");
+    deleteProduct(index) {
+      this.products.splice(index, 1)
     },
-    editProduct(product) {
-      this.$router.push({
-        name: "edit",
-        params: { id: product.id },
-      });
-    },
-    deleteProduct(product) {
-      if (confirm("삭제하시겠습니까?")) {
-        axios
-          .delete(`products/${product.id}.json`)
-          .then(() => {
-            this.products = this.products.filter(
-              (p) => p.id !== product.id
-            );
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-    },
-  },
-};
+    addProduct(product) {
+      this.products.push(product)
+    }
+  }
+}
 </script>
-
