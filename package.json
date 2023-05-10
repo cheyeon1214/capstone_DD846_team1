@@ -11,7 +11,7 @@
     "managermypage": "json-server --watch managermypage.json --port 3008",
     "mylaundrys": "json-server --watch mylaundrys.json --port 3009",
     "requests": "json-server --watch requests.json --port 3012",
-    "products": "json-server --watch requests.json --port 3013",
+    "products": "json-server --watch products.json --port 3013",
     "dev": "concurrently \"npm run managelaundrys\" \"npm run reviews\" \"npm run reviews\" \"npm run managermypage\" \"npm run mylaundrys\" \"npm run requests\" \"npm run products\" "
   },
   "dependencies": {
