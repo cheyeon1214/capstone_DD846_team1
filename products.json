@@ -1,20 +1,28 @@
 {
   "products": [
-      {
-          "id": 1,
-          "name": "상의",
-          "price": 5000,
-          "image": "https://picsum.photos/200/200?random=1"
-      },
-      {"id": 2,
-      "name": "하의",
-      "price": 10000,
-      "image": "https://picsum.photos/200/200?random=2"
-      },
-      {"id": 3,
-          "name": "신발",
-          "price": 5000,
-          "image": "https://picsum.photos/200/200?random=3"
-      }
+    {
+      "id": 1,
+      "productImg": "https://source.unsplash.com/featured/?clothes",
+      "productName": "상의",
+      "nameValue": "",
+      "price": "5000",
+      "priceValue": ""
+    },
+    {
+      "id": 2,
+      "productImg": "https://source.unsplash.com/featured/?clothes",
+      "productName": "하의",
+      "nameValue": "",
+      "price": "6000",
+      "priceValue": ""
+    },
+    {
+      "id": 3,
+      "productImg": "https://source.unsplash.com/featured/?clothes",
+      "productName": "신발",
+      "nameValue": "",
+      "price": "3000",
+      "priceValue": ""
+    }
   ]
 }
