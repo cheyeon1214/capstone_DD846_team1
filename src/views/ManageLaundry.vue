@@ -4,7 +4,7 @@
 <template>
     <v-card class="mx-auto my-5" max-width="400" title="세탁소 관리" elevation="0"><br>
         <v-container>
-            <v-text-field v-model="name" :rules="[rules.required]" 
+            <v-text-field v-model="laundryName" :rules="[rules.required]" 
                 color="blue" label="세탁소명" placeholder="세탁소 이름을 입력해주세요" variant="underlined"></v-text-field><br>
 
             <v-text-field v-model="intro" :rules="[rules.minRules]" 
@@ -33,8 +33,7 @@
         <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="#0C70FE" @click="addManageLaundrys">
-                등록
-                <v-icon icon="mdi-chevron-right" color="#0C70FE" end></v-icon>
+                등록<v-icon icon="mdi-chevron-right" color="#0C70FE" end></v-icon>
             </v-btn>
         </v-card-actions>
     </v-card>
@@ -46,7 +45,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            name: null,
+            laundryName: null,
             intro: null,
             openTime: null,
             closeTime: null,
@@ -58,59 +57,57 @@ export default {
                 required: value => !!value || '반드시 입력하세요',
                 minRules: value => value.length >= 5 || '5자 이상 입력하세요',
             },
-            
         }
     },
     methods: {
         async addManageLaundrys() {
             if (
-            this.rules.required(this.name) === true && 
+            this.rules.required(this.laundryName) === true && 
             this.rules.minRules(this.intro) === true &&
             this.rules.required(this.openTime) === true && 
             this.rules.required(this.closeTime) === true &&
             this.rules.required(this.notice) === true &&
             this.rules.required(this.image) === true
-            ) {
-                console.log('<전송할 정보>',
-                            '이름:', this.name,
-                            '소개:', this.intro,
-                            '오픈시간:', this.openTime,
-                            '마감시간:', this.closeTime,
-                            '공지사항:', this.notice
-                            ); //테스트
+            )
+            {
+                // 새로운 세탁소 데이터 객체
+                const newLaundry = {
+                    laundryName: this.laundryName,
+                    intro: this.intro,
+                    openTime: this.openTime,
+                    closeTime: this.closeTime,
+                    notice: this.notice,
+                };
+
+                // 이미지 업로드를 위한 폼 데이터
+                const formData = new FormData();
+                formData.append('image', this.image);
 
                 try {
-                    
-                    const newData = {
-                        laundryName: this.name,
-                        intro: this.intro,
-                        openTime: this.openTime,
-                        closeTime: this.closeTime,
-                        notice: this.notice,
-                        image: this.image,
-                    };
+                    // 이미지 업로드 요청 (백엔드 api 사용할것)
+                    //const response = await axios.post('http://localhost:4000/upload', formData);
+                    // 업로드된 이미지의 경로를 데이터 객체에 추가
+                    //newLaundry.image = response.data.filePath;
 
-                    // JSON 파일의 내용을 가져옵니다.
-                    const response = await axios.get('http://localhost:3005/managelaundrys');
-                    let jsonData = response.data;
+                    await axios.post('http://localhost:3005/managelaundrys', newLaundry);
+                    console.log('데이터가 성공적으로 추가되었습니다.');
+                    this.showAlert("세탁소 정보가 등록되었습니다.");
 
-                    // managelaundrys 배열이 undefined인 경우 초기화합니다.
-                    if (!jsonData.managelaundrys) {
-                        jsonData.managelaundrys = [];
-                    }
+                    // 입력 필드 초기화
+                    this.laundryName = null;
+                    this.intro = null;
+                    this.openTime = null;
+                    this.closeTime = null;
+                    this.notice = null;
+                    this.image = null;
 
-                    // 새로운 데이터를 기존 데이터에 추가합니다.
-                    jsonData.managelaundrys.push(newData);
-
-                    // 변경된 데이터를 JSON 파일에 업데이트합니다.
-                    await axios.put('http://localhost:3005/managelaundrys', jsonData);
-
-                    console.log('데이터가 추가되었습니다.');
-
-                } catch (e) {
-                    console.error(e);
+                } catch (error) {
+                    console.error('데이터 추가 오류:', error);
                 }
             }
+        },
+        showAlert(message) {
+            alert(message);
         },
     },
 };

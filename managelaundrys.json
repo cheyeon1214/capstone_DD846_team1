@@ -1,13 +1,12 @@
 {
-    "managelaundrys": [
-      {
-        "id": 100,
-        "laundryName": "스톤 세탁소",
-        "intro": "세탁소입니다",
-        "openTime": "오전 11:00",
-        "closeTime": "오후 05:00",
-        "notice": "연중무휴",
-        "image": ""
-      }
-    ]
-  }
+  "managelaundrys": [
+    {
+      "laundryName": "인생 세탁소",
+      "intro": "반갑습니다. 인생 세탁소입니다.",
+      "openTime": "08:00",
+      "closeTime": "19:00",
+      "notice": "연중무휴",
+      "id": 1
+    }
+  ]
+}
