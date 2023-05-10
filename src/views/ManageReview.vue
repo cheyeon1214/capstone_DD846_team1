@@ -4,7 +4,7 @@
 <template>
   <v-card class="mx-auto my-5" max-width="400" elevation="0"><br>
     <div style="margin-top: -28px;"></div>
-      <v-card  v-for="r in reviews" :key="r.id" elevation="0" style="margin-bottom: 10px;">
+      <v-card v-for="r in reviews" :key="r.id" elevation="0" style="margin-bottom: 10px;">
           <v-card-text style="margin-bottom: -5px;">
               <span id="userID" style="font-weight: bold; font-size: 15px;">
                   {{ r.userId }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
