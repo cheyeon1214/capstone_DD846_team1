@@ -9,7 +9,7 @@
     "managelaundrys": "json-server --watch managelaundrys.json --port 3005",
     "reviews": "json-server --watch reviews.json --port 3006",
     "requests": "json-server --watch requests.json --port 3012",
-    "dev": "concurrently \"npm run managelaundrys\" \"npm run reviews\" \"npm run managermypage\" \"npm run mylaundrys\" \"npm run requests\" "
+    "dev": "concurrently \"npm run managelaundrys\" \"npm run reviews\" \"npm run requests\" "
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
