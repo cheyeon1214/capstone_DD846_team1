@@ -25,7 +25,7 @@
             </v-row><br>
 
             <v-text-field v-model="tel" :rules="[rules.phoneNumber]" 
-                color="blue" label="전화번호" placeholder="세탁소 전화번호를 작성해주세요" variant="underlined"></v-text-field><br>
+                color="blue" label="전화번호 (000-0000-0000)" placeholder="세탁소 전화번호를 작성해주세요" variant="underlined"></v-text-field><br>
 
             <v-text-field v-model="notice" :rules="[rules.required]" 
                 color="blue" label="공지사항" placeholder="공지사항을 작성해주세요" variant="underlined"></v-text-field><br>
