@@ -66,9 +66,7 @@
         show: false,
         products: [],
         productName: "",
-        nameValue: "",
         price: "",
-        priceValue: "",
         reply: "",
         add_name: null,
         add_price: null,
@@ -111,34 +109,33 @@
       },
 
       async addProduct() {
-  if (
-    this.rules.required(this.add_name) === true &&
-    this.rules.required(this.add_price) === true &&
-    this.rules.required(this.add_image) === true
-  ) {
+        if (
+          this.rules.required(this.add_name) === true &&
+          this.rules.required(this.add_price) === true &&
+          this.rules.required(this.add_image) === true
+        ) {
+
     const newProduct = {
       productName: this.add_name,
       price: this.add_price,
+      productImg: this.add_image,
     };
 
-    const formData = new FormData();
-    formData.append("productImg", this.add_image);
-
     try {
-      await axios.post("http://localhost:3013/products", newProduct);
-      console.log("데이터가 성공적으로 추가되었습니다.");
-      this.products.push(newProduct); // 새로운 상품 정보를 배열에 추가
-      this.$forceUpdate(); // 화면 강제 업데이트
+      const res = await axios.post("http://localhost:3013/products", newProduct);
+      this.products.push(res.data);
+      this.showAlert("상품이 추가되었습니다.");
+      await this.sendProductNameAndPrice(res.data, res.data.productName, res.data.price);
 
       this.add_name = null;
       this.add_price = null;
       this.add_image = null;
 
-    } catch (error) {
-      console.error(error);
+      } catch (e) {
+        console.error(e);
+      }
     }
-  }
-},
+  },
 
       showAlert(message) {
         alert(message);
