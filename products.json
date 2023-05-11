@@ -6,7 +6,8 @@
       "productName": "상의",
       "nameValue": "",
       "price": "5000",
-      "priceValue": ""
+      "priceValue": "",
+      "reply": ""
     },
     {
       "id": 2,
@@ -14,15 +15,17 @@
       "productName": "하의",
       "nameValue": "",
       "price": "6000",
-      "priceValue": ""
+      "priceValue": "",
+      "reply": ""
     },
     {
       "id": 3,
-      "productImg": "https://source.unsplash.com/featured/?clothes",
+      "productImg": "https://source.unsplash.com/featured/?shoes",
       "productName": "신발",
       "nameValue": "",
-      "price": "3000",
-      "priceValue": ""
+      "price": "7000",
+      "priceValue": "",
+      "reply": ""
     }
   ]
 }
