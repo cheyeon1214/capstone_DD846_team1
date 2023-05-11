@@ -34,7 +34,7 @@
               <v-btn icon="mdi-check" @click="sendProductNameAndPrice(pro, pro.productName, pro.price)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
             </v-card-actions>
             <v-card-actions style="margin-left: 20px; margin-top: -10px;">
-              <v-btn id="delete" icon="mdi-delete" style="margin-top: -30px;" @click="deleteproduct(pro.delite)"><v-icon></v-icon></v-btn>
+              <v-btn id="delete" icon="mdi-delete" style="margin-top: -30px;" @click="deleteproduct(pro.id)"><v-icon></v-icon></v-btn>
             </v-card-actions>
           </v-row>
   </v-card>
@@ -51,14 +51,14 @@
 
   export default {
     data: () => ({
-    show: false,
-    products: [],
-    productName: "",
-    nameValue: "",
-    price: "",
-    priceValue: "",
-    reply: ""
-  }),
+      show: false,
+      products: [],
+      productName: "",
+      nameValue: "",
+      price: "",
+      priceValue: "",
+      reply: ""
+    }),
 
     async created() {
       try {
@@ -69,32 +69,48 @@
       }
     },
 
-    methods: { 
-      async sendProductNameAndPrice(pro, productName, price) {
-      try {
+    methods: {
+  async sendProductNameAndPrice(pro, productName, price) {
+    try {
       pro.productName = productName || pro.productName;
       pro.price = price || pro.price;
       await axios.put(`http://localhost:3013/products/${pro.id}`, pro);
       this.showAlert("상품 정보가 변경되었습니다.");
-      } catch (e)
-     {
+    } catch (e) {
       console.error(e);
-      }
-      },
-    },
+    }
+  },
 
-      async deleteproduct(deleteId) {
-            try {
-                await axios.delete(`http://localhost:3013/products/${deleteId}`);
-                window.location.reload(); 
-                this.showAlert("상품이 삭제되었습니다.");
-            } catch (e) {
-                console.error(e);
-            }
-        },
-  
-headers: {
-  'Access-Control-Allow-Origin': '*'
-}
-};
+  async deleteproduct(deleteId) {
+    try {
+      await axios.delete(`http://localhost:3013/products/${deleteId}`);
+      window.location.reload(); 
+      this.showAlert("상품이 삭제되었습니다.");
+    } catch (e) {
+      console.error(e);
+    }
+  },
+
+  async AddProduct(pro, productName, price, productImg) {
+    try {
+      pro.productName = productName || pro.productName;
+      pro.price = price || pro.price;
+      pro.productImg = productImg || pro.productImg;
+      await axios.put(`http://localhost:3013/products/${pro.id}`, pro);
+      this.showAlert("상품 정보가 추가되었습니다.");
+    } catch (e) {
+      console.error(e);
+    }
+  },
+
+  showAlert(message) {
+    alert(message);
+  }
+},
+
+
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  };
 </script>
