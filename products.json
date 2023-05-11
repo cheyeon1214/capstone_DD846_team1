@@ -4,28 +4,19 @@
       "id": 1,
       "productImg": "https://source.unsplash.com/featured/?clothes",
       "productName": "상의",
-      "nameValue": "",
-      "price": "5000",
-      "priceValue": "",
-      "reply": ""
+      "price": "5000"
     },
     {
       "id": 2,
       "productImg": "https://source.unsplash.com/featured/?clothes",
       "productName": "하의",
-      "nameValue": "",
-      "price": "6000",
-      "priceValue": "",
-      "reply": ""
+      "price": "6000"
     },
     {
       "id": 3,
       "productImg": "https://source.unsplash.com/featured/?shoes",
       "productName": "신발",
-      "nameValue": "",
-      "price": "7000",
-      "priceValue": "",
-      "reply": ""
+      "price": "8000"
     }
   ]
 }
