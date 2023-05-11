@@ -1,67 +1,100 @@
-<!-- 상품 관리 -->
+<!--상품관리-->
+<!--이시언-->
 
 <template>
   <v-card class="mx-auto my-5" max-width="400" title="상품 관리" elevation="0">
-    <br />
+    <br/>
     <v-divider></v-divider>
-
-    <v-card v-for="(product, index) in products" :key="index" elevation="0" style="margin-bottom: 10px;">
-      <v-img class="align-end text-white" id="productImg" height="150" :src="product.image" cover></v-img>
-
-      <v-card-text style="margin-bottom: -5px;">
-        <span id="productName" style="font-weight: bold; font-size: 15px;">
-          {{ product.name }} &nbsp;
-        </span>
-        <span id="productPrice" style="color: gray">{{ product.price }} 원</span>
-      </v-card-text>
-
-      <v-row>
-        <v-col cols="5" style="margin-left: 30px;">
-          <v-text-field v-model="product.name" placeholder="상품 이름" variant="outlined"></v-text-field>
-        </v-col>
-        <v-col cols="5">
-          <v-text-field v-model="product.price" placeholder="상품 가격" variant="outlined"></v-text-field>
-        </v-col>
-      </v-row>  
-      <v-card-actions style="margin-left: 250px; margin-top: -10px;">
-        <v-btn icon="mdi-check" @click="updateProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
-        <v-btn icon="mdi-delete" @click="deleteProduct(index)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
-      </v-card-actions>
-      
-
-      <v-divider class="mx-1 mb-1"></v-divider>
-
-    </v-card>
-    <add-product @product-added="addProduct"></add-product>
-
   </v-card>
+
+  <v-card  v-for="pro in products" :key="pro.id" elevation="0" style="margin-bottom: 10px;">
+          <v-img class="align-end" id="productImg" height="150"
+              :src="pro.productImg" cover>
+          </v-img>
+          <v-card-text style="margin-bottom: -5px;">
+              <span id="productName" style="font-weight: bold; font-size: 15px;">
+                  {{ pro.productName }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+              <span id="price" style="font-weight: bold; font-size: 15px;">
+                  {{ pro.price }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span>
+          </v-card-text>
+
+          <v-row>
+            <v-col cols="5" style="margin-left: 30px;">
+              <v-text-field v-model="pro.productName" :placeholder="pro.productName" variant="outlined"></v-text-field>
+            </v-col>
+            <v-col cols="5" style="margin-left: 30px;">
+              <v-text-field v-model="pro.price" :placeholder="pro.price" variant="outlined"></v-text-field>
+            </v-col>
+          </v-row>  
+
+          <v-row>
+            <v-card-actions style="margin-left: 255px; margin-top: -10px;">
+              <v-btn icon="mdi-check" @click="sendProductNameAndPrice(pro, pro.productName, pro.price)" style="margin-top: -30px;"><v-icon></v-icon></v-btn>
+            </v-card-actions>
+            <v-card-actions style="margin-left: 20px; margin-top: -10px;">
+              <v-btn id="delete" icon="mdi-delete" style="margin-top: -30px;" @click="deleteproduct(pro.delite)"><v-icon></v-icon></v-btn>
+            </v-card-actions>
+          </v-row>
+  </v-card>
+
+  <v-card>
+    <add-product @product-added="addProduct"></add-product>
+  </v-card>
+
 </template>
 
+
 <script>
-import AddProduct from './AddProduct.vue'
-export default {
-  components: {
-    'add-product': AddProduct
-  },
-  data() {
-    return {
-      products: [
-        {id: 1, name: '상의', price: 5000, image: 'https://picsum.photos/200/200?random=1'},
-        {id: 2, name: '하의', price: 10000, image: 'https://picsum.photos/200/200?random=2'},
-        {id: 3, name: '신발', price: 10000, image: 'https://picsum.photos/200/200?random=3'}
-      ],
-    }
-  },
-  methods: {
-    updateProduct(index) {
-      this.products[index] = this.editedProduct
+  import axios from "axios";
+
+  export default {
+    data: () => ({
+    show: false,
+    products: [],
+    productName: "",
+    nameValue: "",
+    price: "",
+    priceValue: "",
+    reply: ""
+  }),
+
+    async created() {
+      try {
+        const res = await axios.get("http://localhost:3013/products");
+        this.products = res.data;
+      } catch (e) {
+        console.error(e);
+      }
     },
-    deleteProduct(index) {
-      this.products.splice(index, 1)
+
+    methods: { 
+      async sendProductNameAndPrice(pro, productName, price) {
+      try {
+      pro.productName = productName || pro.productName;
+      pro.price = price || pro.price;
+      await axios.put(`http://localhost:3013/products/${pro.id}`, pro);
+      this.showAlert("상품 정보가 변경되었습니다.");
+      } catch (e)
+     {
+      console.error(e);
+      }
+      },
     },
-    addProduct(product) {
-      this.products.push(product)
-    }
-  }
+
+      async deleteproduct(deleteId) {
+            try {
+                await axios.delete(`http://localhost:3013/products/${deleteId}`);
+                window.location.reload(); 
+                this.showAlert("상품이 삭제되었습니다.");
+            } catch (e) {
+                console.error(e);
+            }
+        },
+  
+headers: {
+  'Access-Control-Allow-Origin': '*'
 }
+};
 </script>
