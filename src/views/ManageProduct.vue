@@ -8,24 +8,28 @@
   </v-card>
 
   <v-card v-for="pro in products" :key="pro.id" elevation="0" style="margin-bottom: 10px;">
-    <v-img class="align-end" id="productImg" height="150" :src="pro.productImg" cover></v-img>
+    <v-img class="align-end" id="productImg" height="150" :src="pro.productImg" cover style="width: 85px; height: 80px; float: left; margin-left: 15px; margin-top: 15px; margin-right: 17px; border-radius: 5px;"></v-img>
     <v-card-text style="margin-bottom: -5px;">
-      <span id="productName" style="font-weight: bold; font-size: 15px;">
-        {{ pro.productName }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </span>
-      <span id="price" style="font-weight: bold; font-size: 15px;">
-        {{ pro.price }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </span>
-    </v-card-text>
+  <span id="productName" style="font-weight: bold; font-size: 15px; display: inline-block; text-align: right; width: 20%;">
+    {{ pro.productName }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+  <span id="price" style="font-weight: bold; font-size: 15px; display: inline-block; text-align: right; width: 17%;">
+    {{ pro.price }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </span>
+</v-card-text>
 
-    <v-row>
-      <v-col cols="5" style="margin-left: 30px;">
-        <v-text-field v-model="pro.productName" :placeholder="pro.productName" variant="outlined"></v-text-field>
-      </v-col>
-      <v-col cols="5" style="margin-left: 30px;">
-        <v-text-field v-model="pro.price" :placeholder="pro.price" variant="outlined"></v-text-field>
-      </v-col>
-    </v-row>
+
+<v-row>
+  <v-col cols="5" class="text-right pr-2">
+    <v-text-field v-model="pro.productName" :placeholder="pro.productName" variant="outlined"></v-text-field>
+  </v-col>
+  <v-col cols="5" class="pl-2">
+    <v-text-field v-model="pro.price" :placeholder="pro.price" variant="outlined" class="no-right-margin"></v-text-field>
+  </v-col>
+</v-row>
+
+
+
 
     <v-row>
       <v-card-actions style="margin-left: 255px; margin-top: -10px;">
@@ -43,7 +47,6 @@
       <br/>
       <v-text-field v-model="add_price" :rules="[rules.required]" color="blue" label="가격" variant="underlined"></v-text-field>
       <br/>
-      <v-file-input v-model="add_image" :rules="[rules.required]" color="blue" label="상품 이미지" variant="outlined"></v-file-input>
     </v-container>
     <v-divider></v-divider>
 
@@ -70,7 +73,6 @@
         reply: "",
         add_name: null,
         add_price: null,
-        add_image: null,
         rules: {
           required: (value) => !!value|| "반드시 입력하세요",
         },
@@ -111,14 +113,12 @@
       async addProduct() {
         if (
           this.rules.required(this.add_name) === true &&
-          this.rules.required(this.add_price) === true &&
-          this.rules.required(this.add_image) === true
+          this.rules.required(this.add_price) === true
         ) {
 
     const newProduct = {
       productName: this.add_name,
       price: this.add_price,
-      productImg: this.add_image,
     };
 
     try {
@@ -129,7 +129,6 @@
 
       this.add_name = null;
       this.add_price = null;
-      this.add_image = null;
 
       } catch (e) {
         console.error(e);
