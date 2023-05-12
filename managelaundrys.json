@@ -1,6 +1,11 @@
 {
   "managelaundrys": [
     {
+      "managerId": "manager123",
+      "manager_name": "뭉이",
+      "manager_phonenumber": "010-1234-5678",
+      "manager_newPassword": "",
+      "manager_newPasswordConfirm": "",
       "laundryName": "인생 세탁소",
       "laundryAddr": "경기도 수원시",
       "intro": "반갑습니다. 인생 세탁소입니다.",
