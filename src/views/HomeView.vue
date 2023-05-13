@@ -31,10 +31,7 @@
         <v-img src="@/assets/images/snsLogo.png" style=" width: 100px; margin-left: 40px; margin-top: 35px; margin-bottom: 25px; border-radius: 5px;"></v-img>
       </v-cols>
     </v-row>
-    
-    
   </v-card>
-
 </template>
 
 <script>
