@@ -137,16 +137,26 @@ export default {
                     tel: this.tel,
                     notice: this.notice,
                 };
-
+                    
                 // 이미지 업로드를 위한 폼 데이터
                 const formData = new FormData();
                 formData.append('image', this.image);
 
                 try {
-                    // 이미지 업로드 요청
-                    //const response = await axios.post('http://localhost:4000/upload', formData);
-                    // 업로드된 이미지의 경로를 데이터 객체에 추가
-                    //newLaundry.image = response.data.filePath;
+                    // 이미지 업로드 API 엔드포인트 호출
+                    axios.post('http://localhost:4000/upload', formData)
+                        .then(response => {
+                            // 이미지 업로드 성공 시 처리 로직
+                            console.log(response.data.message);
+                            console.log('업로드된 이미지 경로:', response.data.imagePath);
+
+                            // 이미지 경로를 Vue 컴포넌트에 할당
+                            newLaundry.imagePath = response.data.imagePath;
+                        })
+                        .catch(error => {
+                            // 이미지 업로드 실패 시 처리 로직
+                            console.error(error);
+                        });
 
                     const response = await axios.post('http://localhost:3005/managelaundrys', newLaundry);
                     const createdLaundryId = response.data.id; // 생성된 아이디를 저장
